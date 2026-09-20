@@ -1,4 +1,5 @@
 using Core.Primitives.Entity;
+using Domain.Errors;
 
 namespace Domain.Entities;
 
@@ -29,4 +30,64 @@ public class CustomerPackageEntity(
     public CustomerEntity Customer { get; set; } = null!;
     public PackageEntity Package { get; set; } = null!;
     public BusinessEntity Business { get; set; } = null!;
+
+    //Domain Logics
+    /// <summary>
+    /// Credits that are neither spent nor already promised to a waitlist entry
+    /// </summary>
+    public int AvailableCredits => RemainingCredits - ReservedCredits;
+
+    public bool BelongsToBusiness(Guid businessId)
+    {
+        return this.BusinessId == businessId;
+    }
+
+    public bool BelongsToCustomer(Guid customerId)
+    {
+        return this.CustomerId == customerId;
+    }
+
+    public void ConsumeCredits(int count, DateTime now)
+    {
+        if (IsExpired(now))
+        {
+            throw BookingErrors.PackageExpired(now);
+        }
+
+        if (AvailableCredits < count)
+        {
+            throw BookingErrors.InsufficientCredits(
+                $"Insufficient available credits. Requested: {count}, Available: {AvailableCredits}."
+            );
+        }
+
+        RemainingCredits -= count;
+    }
+
+    public bool HasEnoughCredit()
+    {
+        return AvailableCredits >= 1;
+    }
+
+    public bool IsExpired(DateTime now)
+    {
+        return now >= ExpiresAt;
+    }
+
+    public void ReservesCredits(int count, DateTime now)
+    {
+        if (IsExpired(now))
+        {
+            throw BookingErrors.PackageExpired(now);
+        }
+
+        if (AvailableCredits < count)
+        {
+            throw BookingErrors.InsufficientCredits(
+                $"Insufficient available credits. Requested: {count}, Available: {AvailableCredits}."
+            );
+        }
+
+        ReservedCredits -= count;
+    }
 }

@@ -6,13 +6,13 @@ namespace Application.Features.Customer.Mappers;
 
 public static class CustomerMapper
 {
-    public static TokenPayload ToTokenPayload(this CustomerEntity user)
+    public static TokenPayload ToTokenPayload(this CustomerEntity customer)
     {
-        return new TokenPayload(Id: user.Id, Name: user.Name, Email: user.Email);
+        return new TokenPayload(Id: customer.Id, Name: customer.Name, Email: customer.Email);
     }
 
-    public static CustomerResponse ToCustomerResponse(this CustomerEntity user)
+    public static CustomerResponse ToCustomerResponse(this CustomerEntity customer)
     {
-        return new CustomerResponse(Id: user.Id, Name: user.Name, Email: user.Email);
+        return new CustomerResponse(Id: customer.Id, Name: customer.Name, Email: customer.Email);
     }
 }

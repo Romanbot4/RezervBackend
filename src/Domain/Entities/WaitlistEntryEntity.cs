@@ -1,4 +1,5 @@
 using Core.Primitives.Entity;
+using Domain.Enums;
 
 namespace Domain.Entities;
 
@@ -20,13 +21,15 @@ public class WaitlistEntryEntity(
     Guid timetableScheduleId,
     Guid customerId,
     Guid customerPackageId,
-    DateTime joinedAt
+    DateTime joinedAt,
+    WaitlistStatus status = WaitlistStatus.Waiting
 ) : AggregateRoot(id), IHasTimestamps
 {
     public Guid TimetableScheduleId { get; set; } = timetableScheduleId;
     public Guid CustomerId { get; set; } = customerId;
     public Guid CustomerPackageId { get; set; } = customerPackageId;
     public DateTime JoinedAt { get; set; } = joinedAt;
+    public WaitlistStatus Status { get; set; } = status;
     public DateTime? PromotedAt { get; set; }
     public Guid? BookingId { get; set; }
     public DateTime AddedAt { get; set; }

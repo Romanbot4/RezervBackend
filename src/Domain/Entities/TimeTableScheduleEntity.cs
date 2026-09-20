@@ -39,6 +39,17 @@ public class TimetableScheduleEntity(
     //Join Entities
     public BusinessEntity Business { get; set; } = null!;
     public ICollection<BookingEntity> Bookings { get; set; } = [];
-
     public ICollection<WaitlistEntryEntity> WaitlistEntries { get; set; } = [];
+
+    //Domain Logics
+    public bool HasAvailableSlot()
+    {
+        return (AvailableSlots - BookedCount) > 0;
+    }
+
+    //Domain logics
+    public bool HasStarted(DateTime now)
+    {
+        return StartTime <= now;
+    }
 }

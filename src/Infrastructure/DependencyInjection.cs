@@ -12,6 +12,7 @@ public static class DependencyInjection
     {
         services.AddScoped<IDateTime, MachineDateTime>();
         services.AddScoped<IHashPasswordService, Md5HashPasswordService>();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
 
         return services;
     }

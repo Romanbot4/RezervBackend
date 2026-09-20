@@ -1,4 +1,5 @@
 using Core.Primitives.Entity;
+using Domain.Enums;
 
 namespace Domain.Entities;
 
@@ -6,12 +7,14 @@ public class CreditTransactionEntity(
     Guid id,
     Guid customerPackageId,
     int amount,
+    CreditTransactionType type,
     string reason,
     DateTime occurredAt
 ) : AggregateRoot(id), IHasTimestamps
 {
     public Guid CustomerPackageId { get; set; } = customerPackageId;
     public int Amount { get; set; } = amount;
+    public CreditTransactionType Type { get; set; } = type;
     public string Reason { get; set; } = reason;
     public DateTime OccurredAt { get; set; } = occurredAt;
     public Guid? BookingId { get; set; }

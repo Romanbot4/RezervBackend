@@ -1,4 +1,6 @@
-﻿using Application.Configurations;
+﻿using Application.Abstractions.Services;
+using Application.Configurations;
+using Application.Services;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,8 @@ public static class DependencyInjection
         );
 
         services.AddValidatorsFromAssembly(AssemblyReference.Assembly);
+
+        services.AddScoped<IBookingService, BookingService>();
 
         return services;
     }

@@ -1,8 +1,10 @@
 ﻿using Application.Abstractions.DateTime;
+using Application.Abstractions.Repositories;
 using Application.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Persistence.Repositories;
 
 namespace Persistence;
 
@@ -29,6 +31,8 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork, ApplicationDbContext>(services =>
             services.GetRequiredService<ApplicationDbContext>()
         );
+
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
         return services;
     }
 }

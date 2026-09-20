@@ -38,4 +38,7 @@ public class TimetableScheduleEntity(
 
     //Join Entities
     public BusinessEntity Business { get; set; } = null!;
+    public ICollection<BookingEntity> Bookings { get; set; } = [];
+
+    public ICollection<WaitlistEntryEntity> WaitlistEntries { get; set; } = [];
 }

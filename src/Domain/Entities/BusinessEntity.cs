@@ -15,4 +15,8 @@ public class BusinessEntity(Guid id, string name, bool isActive = true)
     public bool IsActive { get; set; } = isActive;
     public DateTime AddedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+
+    //Join Enitties
+    public ICollection<PackageEntity> Packages { get; set; } = [];
+    public ICollection<TimetableScheduleEntity> TimetableSchedules { get; set; } = [];
 }

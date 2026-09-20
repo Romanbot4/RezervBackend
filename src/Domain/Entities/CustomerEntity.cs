@@ -11,4 +11,8 @@ public class CustomerEntity(Guid id, string name, string email, string passwordH
     public string PasswordHash { get; set; } = passwordHash;
     public DateTime AddedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+
+    //Join Entities
+    public ICollection<CustomerPackageEntity> CustomerPackages { get; set; } = [];
+    public ICollection<BookingEntity> Bookings { get; set; } = [];
 }

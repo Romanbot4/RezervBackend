@@ -37,3 +37,10 @@ I will use Domain driven approach and will translate business logic methods to e
 
 - based on simple MD5
 - used XUnit for testing and will use for other tests too
+
+## 3. Define Entity Relationship
+
+- read and review the business logic requirement and defined entity relationship in Domain Layer
+- implemented the entity configurations inside Persistence Layer
+- also added the seed to most fundamental entities
+- focused on timetable data. will need to use these data to test different edge cases.

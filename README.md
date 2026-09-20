@@ -32,3 +32,8 @@ I will use Domain driven approach and will translate business logic methods to e
 ----TimeableScheduleEntity.cs
 ----WaitlistEntryEntity.cs
 ```
+
+## 3. Added IHashPasswordService and Tests
+
+- based on simple MD5
+- used XUnit for testing and will use for other tests too

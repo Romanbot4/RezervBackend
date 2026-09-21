@@ -54,6 +54,11 @@ public class TimetableScheduleEntity(
         return StartTime <= now;
     }
 
+    public bool HasEnded(DateTime now)
+    {
+        return EndTime <= now;
+    }
+
     public static readonly TimeSpan RefundWindow = TimeSpan.FromHours(4);
 
     public bool QualifiesForRefund(DateTime now)

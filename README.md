@@ -12,6 +12,7 @@ docker compose up --build
 ```
 
 Swagger is on http://localhost:3000/swagger and / redirects there.
+The Hangfire dashboard is on http://localhost:3000/hangfire, see section 15.
 The api waits for MySql and Redis and migrations to exit 0 before it starts.
 
 Stop
@@ -329,26 +330,21 @@ Measured on a fresh database
 2nd call  hit   0.0056s   no db query
 ```
 
-## 14. Database Schema (ERD)
+## 14. Hangfire (The one that I left behind)
 
-The doc asks for an ERD or schema documentation as a deliverable so I drew one properly instead of
-writing the tables out by hand. The diagram is up at the top, under section 1.
+The waitlist rules in the doc have one line that I've not yet implemented.
 
 ```
-RezervERD.jpg    the diagram
-RezervERD.pdf    same for printing
+4. If class ends and user remains in waitlist:
+  credit reservation should be released / no deduction applied.
 ```
 
-- I pulled the columns, types, nullability, delete rules and indexes out of `information_schema` on
-  the running database rather than typing them from the entity classes, so the diagram cannot drift
-  from what migrations actually produced
-- crow's foot notation. solid is `ON DELETE CASCADE`, dashed is `ON DELETE RESTRICT`,
-  dotted is a column that points at another row but has no foreign key
-- the 3 columns with the warning sign are the contended counters, `BookedCount`,
-  `RemainingCredits` and `ReservedCredits`. They are the ones section 11 is about, only ever moved by
-  a conditional update
-- `RESTRICT` is on every edge where losing the parent would strand money or history. `CASCADE` is
-  only where the child means nothing without the parent
+Hangfire dashboard on /hangfire
+
+- `waitlist-release-ended` job running every 5 minutes added
+- finds schedules that already ended and still have waitlist customer
+- reuses IBookingService.DropWaitlistAsync for the credit release
+- WaitlistPromoter cannot not reused right now. It starts with `currentUser.CustomerId ?? throw AuthRequiredException` . ( I should check those methods under BookingService for reusability. Currently coupled to currentUserService )
 
 ### Afterthought Fix
 

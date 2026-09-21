@@ -19,6 +19,10 @@ public static class DependencyInjection
             configuration.GetSection(JwtConfigurations.SettingKey)
         );
 
+        services.Configure<HangfireConfigurations>(
+            configuration.GetSection(HangfireConfigurations.SettingKey)
+        );
+
         services.AddValidatorsFromAssembly(AssemblyReference.Assembly);
 
         services.AddMediatR(cfg =>
@@ -29,6 +33,7 @@ public static class DependencyInjection
 
         services.AddScoped<IBookingService, BookingService>();
         services.AddScoped<IWaitlistPromoter, WaitlistPromoter>();
+        services.AddScoped<IWaitlistExpirer, WaitlistExpirer>();
 
         return services;
     }

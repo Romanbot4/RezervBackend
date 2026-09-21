@@ -113,4 +113,21 @@ public class TimetableScheduleEntityTests
         sut.StartTime = sut.StartTime.AddDays(7);
         Assert.True(sut.QualifiesForRefund(Now.AddDays(1)));
     }
+
+    [Fact]
+    public void HasEnded_is_false_while_the_class_is_still_running()
+    {
+        var sut = Schedule();
+
+        Assert.False(sut.HasEnded(Now.AddDays(1).AddMinutes(59)));
+    }
+
+    [Fact]
+    public void HasEnded_is_true_from_the_moment_the_class_finishes()
+    {
+        var sut = Schedule();
+
+        Assert.True(sut.HasEnded(Now.AddDays(1).AddHours(1)));
+        Assert.True(sut.HasEnded(Now.AddDays(2)));
+    }
 }

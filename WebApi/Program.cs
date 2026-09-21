@@ -1,8 +1,11 @@
 using System.Text;
 using Application;
 using Application.Configurations;
+using Hangfire;
+using Hangfire.Dashboard;
 using Infrastructure;
 using Infrastructure.Common.ExceptionHandlers;
+using Infrastructure.Common.Jobs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -73,6 +76,31 @@ using (var scope = app.Services.CreateScope())
 {
     await scope.ServiceProvider.GetRequiredService<ISeeder>().SeedAsync();
 }
+
+var hangfireConfigurations =
+    builder
+        .Configuration.GetSection(HangfireConfigurations.SettingKey)
+        .Get<HangfireConfigurations>()
+    ?? new HangfireConfigurations();
+
+app.UseHangfireDashboard(
+    hangfireConfigurations.DashboardPath,
+    new DashboardOptions
+    {
+        Authorization = [app.Services.GetRequiredService<IDashboardAuthorizationFilter>()],
+        DashboardTitle = "Rezerv Jobs",
+        DisplayStorageConnectionString = false,
+        IgnoreAntiforgeryToken = true,
+    }
+);
+
+app.Services.GetRequiredService<IRecurringJobManager>()
+    .AddOrUpdate<WaitlistExpiryJob>(
+        WaitlistExpiryJob.RecurringJobId,
+        job => job.RunAsync(CancellationToken.None),
+        hangfireConfigurations.Cron,
+        new RecurringJobOptions { TimeZone = TimeZoneInfo.Utc }
+    );
 
 app.UseExceptionHandler();
 

@@ -401,6 +401,9 @@ FodyWeavers.xsd
 
 
 *appsettings*.json
+# I committed these settings files on purpose so you guys can runs with no extra setup.
+!WebApi/appsettings.json
+!WebApi/appsettings.Development.json
 *wwwroot*
 
 query.sql

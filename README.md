@@ -2,10 +2,6 @@
 
 ## Project Setup
 
-### PDF file is located at "./RezervERD.pdf"
-
-![Rezerv database schema](RezervERD.jpg)
-
 ### Method A. Docker Compose (fast)
 
 Brings up MySql, Redis, applies the migration with the seed data, then starts the api on port 3000.
@@ -34,11 +30,18 @@ They hold the same names and ports.
 
 ### Method B. Run it manually
 
-#### 1. Setup MySql
+#### 1. Setup MySql and Redis
 
 ```
 docker run -d --name rezerv-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=rezerv mysql:8.4
 ```
+
+```
+docker run -d --name rezerv-redis -p 6379:6379 redis:7-alpine
+```
+
+The api fails open when Redis is down so it still runs without it,
+but section 12 and 13 need it.
 
 #### 2. Migrate and Seed Data
 
@@ -65,6 +68,10 @@ Run it (port : 3000 always)
 ```
 dotnet watch
 ```
+
+### PDF file is located at "./RezervERD.pdf"
+
+![Rezerv database schema](RezervERD.jpg)
 
 ## 1. Clean Architecture Project Setup
 

@@ -37,4 +37,20 @@ public class PackageEntity(
 
     //Join Entities
     public BusinessEntity Business { get; set; } = null!;
+
+    //Domain Logics
+    public CustomerPackageEntity PurchaseFor(Guid customerId, DateTime now)
+    {
+        return new CustomerPackageEntity(
+            id: Guid.NewGuid(),
+            customerId: customerId,
+            packageId: Id,
+            businessId: BusinessId,
+            totalCredits: Credits,
+            remainingCredits: Credits,
+            reservedCredits: 0,
+            purchasedAt: now,
+            expiresAt: now.AddDays(ValidityDays)
+        );
+    }
 }

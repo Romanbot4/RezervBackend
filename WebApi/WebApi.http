@@ -34,6 +34,28 @@ Authorization: Bearer {{accessToken}}
 
 ###
 
+// Add the package credits to the logged in customer
+POST {{WebApi_HostAddress}}/api/packages/purchase
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "packageId": "875d6f79-65ce-4ccf-0dbf-12605df3e09d"
+}
+
+###
+
+// Package not found
+POST {{WebApi_HostAddress}}/api/packages/purchase
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "packageId": "11111111-1111-1111-1111-111111111111"
+}
+
+###
+
 GET {{WebApi_HostAddress}}/api/timetable
 Accept: application/json
 

@@ -125,7 +125,50 @@ So, I decided to reserve on join anyway. So the flow is:
 
 AvailableCredits = RemainingCredits - ReservedCredits is used to check the actual available credits
 
+### 4. Tests
+
 - ./UnitTests/Entities contains the domain logic tests methods that I could think of
 - the credit lifecycle, join then promote costs exactly 1 credit, a single credit cannot be held twice, promotion refuses when nothing was held
 - the slot rules, capacity can never be exceeded limit, release cannot go negative, cancel followed by promotion leaves attendance unchanged
 - the 4 hour refund boundary, tested on both cases
+
+## 7. Seed Data
+
+I added sample data to test the edge cases from the doc, so I seeded everything with HasData.
+
+- 2 businesses, 11 customers, 6 packages, 13 customer packages, 8 schedules, 13 bookings, 2 waitlist
+- Kyaw Pyae Phyo is account I used to test. I own a valid package, an expired package and a used package,
+
+Minor Bug fixes,
+
+- CustomerSeeder was not applied. I accidently added IHashPasswordService which wont work.
+  Added a preprocessed MD% Hash instead to fix.
+- HasData skips SaveChangesAsync so UpdateTimestamps never runs and all AddedAt became 0001-01-01.
+  Defined SeedDateTime and attached the timestamp manually
+
+## 8. Query Methods and Presentation Layer Setup and Connect with Application Layer
+
+### 1. ICommand and IQuery
+
+As I said eailier I usually use CQRS. So, in case I still have time. I would create a readonly DB instance and fully setup CQRS.
+But for now I will use only the syntax of CQRS under UseCases.
+
+- extends the commands onto ICommand and ICommandHandler and queries to IQuery and IQueryHandler
+
+### 2. Routes
+
+```
+GET  /api/businesses      pdf dont have this route but wantted to see the business ids during testing
+GET  /api/packages        ?businessId=
+GET  /api/packages/mine   auth
+GET  /api/timetable       ?businessId= &date=
+GET  /api/bookings/mine   auth
+```
+
+## 9. Global Exception Handling
+
+This is the pattern that I always use to to convert core exception thrown from anywhere to fomatted response.
+
+- a CoreException maps through ToFailure then ToFailureResponse. Other exception else becomes an UnknownException
+  so internal errors data never shown to users.
+- every error has the same body. status, code, message, errors

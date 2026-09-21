@@ -172,3 +172,18 @@ This is the pattern that I always use to to convert core exception thrown from a
 - a CoreException maps through ToFailure then ToFailureResponse. Other exception else becomes an UnknownException
   so internal errors data never shown to users.
 - every error has the same body. status, code, message, errors
+
+## 10. Purchase Package
+
+This is a mock package purchase route that I left while doing other routes.
+
+```
+POST /api/packages/purchase
+```
+
+- mock purchase only. no payment gateway as the doc said
+- PurchaseFor Domain method on PackageEntity builds the CustomerPackage.
+  credits come from the package and ExpiresAt is purchased time plus ValidityDays
+- writes a Purchase credit transaction ledger to show where the credits came from
+- an inactive package cannot be bought
+- I tested that the credits that I bought are usable by booking a class with the new package after buying it

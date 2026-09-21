@@ -5,5 +5,6 @@ public record BookingResponse(
     Guid CustomerId,
     Guid TimetableScheduleId,
     Guid CustomerPackageId,
-    DateTime BookedAt
+    DateTime BookedAt,
+    bool RefundApplied
 );

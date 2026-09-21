@@ -12,7 +12,8 @@ public static class BookingMapper
             booking.CustomerId,
             booking.TimetableScheduleId,
             booking.CustomerPackageId,
-            booking.BookedAt
+            booking.BookedAt,
+            booking.RefundApplied
         );
     }
 }

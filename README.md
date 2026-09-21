@@ -19,7 +19,7 @@ cd ./src/Persistence/
 Migrate and seed data
 
 ```
-cd ./src/Persistence/
+dotnet ef database update
 ```
 
 ## 1. Clean Architecture Project Setup

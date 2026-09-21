@@ -1,11 +1,9 @@
 using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Persistence.Common.Helpers;
 
 namespace Persistence.Seeders;
 
-public class CustomerSeeder : IEntityTypeConfiguration<CustomerEntity>
+public static class CustomerSeeder
 {
     public const string DefaultPassword = "Password123!";
 
@@ -39,10 +37,6 @@ public class CustomerSeeder : IEntityTypeConfiguration<CustomerEntity>
         ThorOdinson,
     ];
 
-    public void Configure(EntityTypeBuilder<CustomerEntity> builder)
-    {
-        builder.HasData(GetCustomers());
-    }
 
     public static ICollection<CustomerEntity> GetCustomers()
     {

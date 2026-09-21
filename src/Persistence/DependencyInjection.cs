@@ -1,11 +1,12 @@
 ﻿using Application.Abstractions.Database;
-using Application.Abstractions.DateTime;
 using Application.Abstractions.Repositories;
 using Application.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Persistence.Common.Abstractions;
 using Persistence.Repositories;
+using Persistence.Seeders;
 
 namespace Persistence;
 
@@ -41,6 +42,8 @@ public static class DependencyInjection
         services.AddScoped<IBookingRepository, BookingRepository>();
         services.AddScoped<IWaitlistRepository, WaitlistRepository>();
         services.AddScoped<ICreditTransactionRepository, CreditTransactionRepository>();
+
+        services.AddScoped<ISeeder, DatabaseSeeder>();
 
         return services;
     }

@@ -1,11 +1,9 @@
 using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Persistence.Common.Helpers;
 
 namespace Persistence.Seeders;
 
-public class CustomerPackageSeeder : IEntityTypeConfiguration<CustomerPackageEntity>
+public static class CustomerPackageSeeder
 {
     public static readonly Guid KyawFitnessStandardId = IdFor("kyaw_fitness_standard");
     public static readonly Guid KyawFitnessExpiredId = IdFor("kyaw_fitness_expired");
@@ -21,10 +19,6 @@ public class CustomerPackageSeeder : IEntityTypeConfiguration<CustomerPackageEnt
     public static readonly Guid TonyYogaStandardId = IdFor("tony_yoga_standard");
     public static readonly Guid ThorYogaStandardId = IdFor("thor_yoga_standard");
 
-    public void Configure(EntityTypeBuilder<CustomerPackageEntity> builder)
-    {
-        builder.HasData(GetCustomerPackages());
-    }
 
     public static ICollection<CustomerPackageEntity> GetCustomerPackages()
     {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Persistence;
+using Persistence.Common.Abstractions;
 using Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -67,6 +68,11 @@ builder.Services.AddAuthorization();
 }
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    await scope.ServiceProvider.GetRequiredService<ISeeder>().SeedAsync();
+}
 
 app.UseExceptionHandler();
 

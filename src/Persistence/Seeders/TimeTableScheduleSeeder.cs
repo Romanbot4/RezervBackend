@@ -1,11 +1,9 @@
 using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Persistence.Common.Helpers;
 
 namespace Persistence.Seeders;
 
-public class TimetableScheduleSeeder : IEntityTypeConfiguration<TimetableScheduleEntity>
+public static class TimetableScheduleSeeder
 {
     public static readonly Guid MorningUpperId = DeterministicGuid.From("time_table_morning_upper");
     public static readonly Guid MorningCardioId = DeterministicGuid.From(
@@ -28,10 +26,6 @@ public class TimetableScheduleSeeder : IEntityTypeConfiguration<TimetableSchedul
         "time_table_sunrise_bootcamp"
     );
 
-    public void Configure(EntityTypeBuilder<TimetableScheduleEntity> builder)
-    {
-        builder.HasData(GetTimetableSchedules());
-    }
 
     public static ICollection<TimetableScheduleEntity> GetTimetableSchedules()
     {

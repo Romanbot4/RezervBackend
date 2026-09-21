@@ -1,11 +1,9 @@
 using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Persistence.Common.Helpers;
 
 namespace Persistence.Seeders;
 
-public class PackageSeeder : IEntityTypeConfiguration<PackageEntity>
+public static class PackageSeeder
 {
     public static readonly Guid FitnessStarterId = DeterministicGuid.From(
         "package_fitness_starter"
@@ -18,12 +16,6 @@ public class PackageSeeder : IEntityTypeConfiguration<PackageEntity>
     public static readonly Guid YogaStandardId = DeterministicGuid.From("package_yoga_standard");
     public static readonly Guid YogaProId = DeterministicGuid.From("package_yoga_pro");
 
-    public void Configure(EntityTypeBuilder<PackageEntity> builder)
-    {
-        ICollection<PackageEntity> packages = GetPackages();
-
-        builder.HasData(packages);
-    }
 
     public static ICollection<PackageEntity> GetPackages()
     {

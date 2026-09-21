@@ -1,16 +1,10 @@
 using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Persistence.Common.Helpers;
 
 namespace Persistence.Seeders;
 
-public class BookingSeeder : IEntityTypeConfiguration<BookingEntity>
+public static class BookingSeeder
 {
-    public void Configure(EntityTypeBuilder<BookingEntity> builder)
-    {
-        builder.HasData(GetBookings());
-    }
 
     public static ICollection<BookingEntity> GetBookings()
     {

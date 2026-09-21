@@ -1,16 +1,10 @@
 using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Persistence.Common.Helpers;
 
 namespace Persistence.Seeders;
 
-public class WaitlistEntrySeeder : IEntityTypeConfiguration<WaitlistEntryEntity>
+public static class WaitlistEntrySeeder
 {
-    public void Configure(EntityTypeBuilder<WaitlistEntryEntity> builder)
-    {
-        builder.HasData(GetWaitlistEntries());
-    }
 
     public static ICollection<WaitlistEntryEntity> GetWaitlistEntries()
     {

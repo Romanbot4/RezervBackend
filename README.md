@@ -4,7 +4,8 @@
 
 ### Method A. Docker Compose (fast)
 
-Brings up MySql, Redis, applies the migration with the seed data, then starts the api on port 3000.
+Brings up MySql, Redis, applies the migration, then starts the api on port 3000.
+The api inserts the sample data on its first start.
 
 ```
 docker compose up --build
@@ -43,7 +44,7 @@ docker run -d --name rezerv-redis -p 6379:6379 redis:7-alpine
 The api fails open when Redis is down so it still runs without it,
 but section 12 and 13 need it.
 
-#### 2. Migrate and Seed Data
+#### 2. Migrate
 
 Change dir to Persistence folder
 
@@ -51,7 +52,7 @@ Change dir to Persistence folder
 cd ./src/Persistence/
 ```
 
-Migrate and seed data
+Create the schema
 
 ```
 dotnet ef database update
@@ -348,3 +349,11 @@ RezervERD.pdf    same for printing
   a conditional update
 - `RESTRICT` is on every edge where losing the parent would strand money or history. `CASCADE` is
   only where the child means nothing without the parent
+
+### Afterthought Fix
+
+Previously, My seeders build around the HasData and, HasData bakes every value into the
+migration when I scaffolded, so those times froze on the time I created it.
+Due to the nature of this project and I decided to migrate using ISeeder
+
+Fixed: So I moved the data out of HasData into a DatabaseSeeder that runs at startup.

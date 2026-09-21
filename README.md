@@ -22,13 +22,13 @@ docker compose down
 Stop and Delete the DB
 
 ```
-docker compose down -v    stop and delete the database away
+docker compose down -v
 ```
 
 If you already ran the standalone `docker run` for MySql or Redis, remove those first.
 They hold the same names and ports.
 
-### Method B. Run it manually
+### Method B. Manually Run
 
 #### 1. Setup MySql and Redis
 

@@ -43,7 +43,8 @@ builder
 
 builder.Services.AddAuthorization();
 
-if (builder.Environment.IsDevelopment())
+/// So you guys can check Swagger even on Prod build
+// if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(options =>
@@ -69,7 +70,8 @@ var app = builder.Build();
 
 app.UseExceptionHandler();
 
-if (app.Environment.IsDevelopment())
+/// So you guys can check Swagger even on Prod build
+// if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();

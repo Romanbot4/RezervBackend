@@ -21,14 +21,12 @@ RUN dotnet restore "./RezervBackend.sln"
 
 COPY . ./
 
-RUN dotnet build "./WebApi/WebApi.csproj" -c Release -o /app/build --verbosity minimal
-
 FROM build AS publish
 
-RUN dotnet tool install --global dotnet-ef --version 9.0.2
+RUN dotnet tool install --global dotnet-ef --version 9.0.20
 ENV PATH="$PATH:/root/.dotnet/tools"
 
-RUN dotnet publish "./WebApi/WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./WebApi/WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 

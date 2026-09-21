@@ -1,4 +1,5 @@
 using Core.Primitives.Entity;
+using Domain.Enums;
 
 namespace Domain.Entities;
 
@@ -24,13 +25,15 @@ public class BookingEntity(
     Guid customerId,
     Guid timetableScheduleId,
     Guid customerPackageId,
-    DateTime bookedAt
+    DateTime bookedAt,
+    BookingStatus status = BookingStatus.Booked
 ) : AggregateRoot(id), IHasTimestamps
 {
     public Guid CustomerId { get; set; } = customerId;
     public Guid TimetableScheduleId { get; set; } = timetableScheduleId;
     public Guid CustomerPackageId { get; set; } = customerPackageId;
     public DateTime BookedAt { get; set; } = bookedAt;
+    public BookingStatus Status { get; set; } = status;
     public DateTime? CancelledAt { get; set; }
     public bool RefundApplied { get; set; }
     public DateTime AddedAt { get; set; }
@@ -40,4 +43,12 @@ public class BookingEntity(
     public CustomerEntity Customer { get; set; } = null!;
     public TimetableScheduleEntity TimetableSchedule { get; set; } = null!;
     public CustomerPackageEntity CustomerPackage { get; set; } = null!;
+
+    // Domain Logics
+    public void Cancel(DateTime now, bool refundApplied)
+    {
+        Status = BookingStatus.Cancelled;
+        RefundApplied = refundApplied;
+        CancelledAt = now;
+    }
 }

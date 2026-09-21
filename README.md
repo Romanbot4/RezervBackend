@@ -58,7 +58,7 @@ I will use Domain driven approach and will translate business logic methods to e
   And ofc, I clearly need to handle the cancellation logics which are completly different.
 
   I also noticed from the start that cancelling from waitlist will release credit reservation under waitlist rules.
-  So, I need to count the remainin
+  So, I need to count the RemainingCredits - ReservedCredits to get the AvailableCredits
 
   I applied all those rules from across packages and bookings as follows
   - ensure that current logged in consumer own the consumer package
@@ -67,3 +67,43 @@ I will use Domain driven approach and will translate business logic methods to e
   - ensure customer have sufficient credits
   - ensure users cannot book overlapping timetable schedules
   - booking deducts 1 package credit immediately.
+
+  New Enums
+  - I will need to define WaitlistStatus to track the state of waitlist.
+  - CreditTransactionEnity will also need WaitlistStatus to define its type
+
+## 6. Cancellation and Waitlist Promotion
+
+Cancellation couple together with the waitlist promotion.
+
+### 1. Cancellation rules
+
+- 1 credit is refunded when cancelled more than 4 hours before the class starts
+- I put the window on TimetableScheduleEntity as RefundWindow and bacause it also has the start time
+- I decided not to refund onto an already expired package
+
+### 2. Promotion
+
+- when a booking is cancelled first person waiting get the slot, FIFO by JoinedAt and Id to break tie
+- during promotion from waitlist, at first I only tried to update the first person.
+  but then I notice that if first peson's package is exp, then next person get the slot.
+  so, I updated WaitlistPromoter to loop the waitlist rather than only looking at the first person.
+- promotion goes through BookingService so I am not writing the same business rules twice
+
+### 3. Credit lifecycle
+
+This is the part I thought about the most. The Doc says the credit is deducted on promotion, and
+that the reservation is released if the class ends while the user is still waiting. It never
+actually says a credit is reserved when joining the waitlist.
+So, I decided to reserve on join anyway. So the flow is:
+
+- join waitlist, ReservesCredits, the credit is reserved and not spent
+- promoted, ConsumeReserveCredits, the reserved credits was actually deducted
+- dropped or class ended, the hold is released and nothing is charged
+
+AvailableCredits = RemainingCredits - ReservedCredits is used to check the actual available credits
+
+- ./UnitTests/Entities contains the domain logic tests methods that I could think of
+- the credit lifecycle, join then promote costs exactly 1 credit, a single credit cannot be held twice, promotion refuses when nothing was held
+- the slot rules, capacity can never be exceeded limit, release cannot go negative, cancel followed by promotion leaves attendance unchanged
+- the 4 hour refund boundary, tested on both cases

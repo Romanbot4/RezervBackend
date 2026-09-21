@@ -64,6 +64,31 @@ public class CustomerPackageEntity(
         RemainingCredits -= count;
     }
 
+    public void ConsumeReserveCredits(int count, DateTime now)
+    {
+        if (IsExpired(now))
+        {
+            throw BookingErrors.PackageExpired(now);
+        }
+
+        if (ReservedCredits < count)
+        {
+            throw BookingErrors.InsufficientCredits(
+                $"Insufficient reserved credits. Requested: {count}, Available: {ReservedCredits}."
+            );
+        }
+
+        if (RemainingCredits < count)
+        {
+            throw BookingErrors.InsufficientCredits(
+                $"Insufficient remaining credits. Requested: {count}, Remaining: {RemainingCredits}."
+            );
+        }
+
+        ReservedCredits -= count;
+        RemainingCredits -= count;
+    }
+
     public bool HasEnoughCredit()
     {
         return AvailableCredits >= 1;
@@ -88,6 +113,6 @@ public class CustomerPackageEntity(
             );
         }
 
-        ReservedCredits -= count;
+        ReservedCredits += count;
     }
 }

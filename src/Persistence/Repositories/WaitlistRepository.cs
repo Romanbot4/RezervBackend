@@ -11,6 +11,19 @@ public class WaitlistRepository(IDbContext dbContext)
     : GenericRepository<WaitlistEntryEntity>(dbContext),
         IWaitlistRepository
 {
+    public Task<WaitlistEntryEntity?> GetNextWaitingAsync(
+        Guid id,
+        CancellationToken cancellationToken
+    )
+    {
+        return _query
+            .Include(w => w.CustomerPackage)
+            .Where(w => w.TimetableScheduleId == id && w.Status == WaitlistStatus.Waiting)
+            .OrderBy(w => w.JoinedAt)
+            .ThenBy(w => w.Id)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
     public Task<bool> IsWaitingAsync(
         Guid customerId,
         Guid timetableScheduleId,

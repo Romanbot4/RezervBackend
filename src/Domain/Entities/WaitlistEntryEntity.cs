@@ -39,4 +39,16 @@ public class WaitlistEntryEntity(
     public CustomerEntity Customer { get; set; } = null!;
     public TimetableScheduleEntity TimetableSchedule { get; set; } = null!;
     public CustomerPackageEntity CustomerPackage { get; set; } = null!;
+
+    public void Expire()
+    {
+        Status = WaitlistStatus.Expired;
+    }
+
+    public void Promote(DateTime now, Guid bookingId)
+    {
+        Status = WaitlistStatus.Promoted;
+        PromotedAt = now;
+        BookingId = bookingId;
+    }
 }

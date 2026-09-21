@@ -49,4 +49,15 @@ public interface IBookingService
         BookingContext context,
         CancellationToken cancellationToken = default
     );
+    Task<BookingEntity> PromoteFromWaitlistAsync(
+        BookingContext bookingContext,
+        CancellationToken cancellationToken
+    );
+
+    Task DropWaitlistAsync(
+        WaitlistEntryEntity entry,
+        string reason,
+        DateTime now,
+        CancellationToken cancellationToken
+    );
 }

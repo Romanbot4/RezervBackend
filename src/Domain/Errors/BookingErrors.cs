@@ -11,6 +11,9 @@ public static class BookingErrors
     public static CoreException PackageNotBelongToYou() =>
         new ForbiddenException("This customer package do not belongs to you");
 
+    public static CoreException BookingNotBelongToYou() =>
+        new ForbiddenException("This booking do not belongs to you");
+
     public static CoreException BusinessMismatch() =>
         new ForbiddenException("This customer package do not belongs to this business");
 
@@ -35,4 +38,7 @@ public static class BookingErrors
         new UnprocessableException(
             "This schedule is fully booked. Join the waitlist to be booked automatically if a slot frees up."
         );
+
+    public static CoreException BookingNotActive() =>
+        new UnprocessableException("This booking is not active and cannot be cancelled");
 }

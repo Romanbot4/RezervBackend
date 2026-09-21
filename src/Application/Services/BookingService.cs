@@ -101,6 +101,8 @@ public class BookingService(
 
         await bookings.InsertAsync(booking, cancellationToken);
 
+        schedule.ReserveSlot();
+
         customerPackage.ConsumeCredits(CreditsPerSchedule, now);
 
         var creditTransaction = new CreditTransactionEntity(
@@ -117,6 +119,70 @@ public class BookingService(
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return booking;
+    }
+
+    public async Task<BookingEntity> PromoteFromWaitlistAsync(
+        BookingContext context,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var (_, schedule, customerPackage, now) = context;
+
+        var booking = new BookingEntity(
+            id: Guid.NewGuid(),
+            customerId: customerPackage.CustomerId,
+            timetableScheduleId: schedule.Id,
+            customerPackageId: customerPackage.Id,
+            bookedAt: now
+        );
+
+        await bookings.InsertAsync(booking, cancellationToken);
+
+        // The seat released by the cancellation is taken here, so the freed capacity is handed to
+        // the waitlist rather than left on the floor.
+        schedule.ReserveSlot();
+
+        customerPackage.ConsumeReserveCredits(CreditsPerSchedule, now);
+
+        var creditTransaction = new CreditTransactionEntity(
+            id: Guid.NewGuid(),
+            customerPackageId: customerPackage.Id,
+            type: CreditTransactionType.Deduct,
+            amount: CreditsPerSchedule,
+            reason: "Booking promoted from waitlist. Confirmed.",
+            occurredAt: now
+        );
+
+        await creditTransactions.InsertAsync(creditTransaction, cancellationToken);
+
+        await unitOfWork.SaveChangesAsync(cancellationToken);
+
+        return booking;
+    }
+
+    public async Task DropWaitlistAsync(
+        WaitlistEntryEntity entry,
+        string reason,
+        DateTime now,
+        CancellationToken cancellationToken
+    )
+    {
+        await customerPackages.ReleaseReservationAsync(entry.CustomerPackageId, cancellationToken);
+
+        entry.Expire();
+
+        var creditTransaction = new CreditTransactionEntity(
+            id: Guid.NewGuid(),
+            customerPackageId: entry.CustomerPackage.Id,
+            type: CreditTransactionType.Refund,
+            amount: CreditsPerSchedule,
+            reason: "Booking promoted from waitlist. Confirmed.",
+            occurredAt: now
+        );
+
+        await creditTransactions.InsertAsync(creditTransaction, cancellationToken);
+
+        await unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<WaitlistEntryEntity> JoinWaitlistAsync(

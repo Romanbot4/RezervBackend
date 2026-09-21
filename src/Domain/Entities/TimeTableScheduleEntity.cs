@@ -1,4 +1,5 @@
 using Core.Primitives.Entity;
+using Domain.Errors;
 
 namespace Domain.Entities;
 
@@ -51,5 +52,30 @@ public class TimetableScheduleEntity(
     public bool HasStarted(DateTime now)
     {
         return StartTime <= now;
+    }
+
+    public static readonly TimeSpan RefundWindow = TimeSpan.FromHours(4);
+
+    public bool QualifiesForRefund(DateTime now)
+    {
+        return now < StartTime - RefundWindow;
+    }
+
+    public void ReserveSlot()
+    {
+        if (!HasAvailableSlot())
+        {
+            throw BookingErrors.ScheduleFull();
+        }
+
+        BookedCount += 1;
+    }
+
+    public void ReleaseSlot()
+    {
+        if (BookedCount > 0)
+        {
+            BookedCount -= 1;
+        }
     }
 }

@@ -1,6 +1,7 @@
 using Application.Abstractions.Repositories;
 using Application.Database;
 using Domain.Entities;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Common;
 
@@ -19,7 +20,10 @@ public class BookingRepository(IDbContext dbContext)
         return _query
             .AsNoTracking()
             .AnyAsync(
-                b => b.CustomerId == customerId && b.TimetableScheduleId == timetableScheduleId,
+                b =>
+                    b.CustomerId == customerId
+                    && b.TimetableScheduleId == timetableScheduleId
+                    && b.Status == BookingStatus.Booked,
                 cancellationToken
             );
     }
@@ -33,7 +37,7 @@ public class BookingRepository(IDbContext dbContext)
     {
         return _query
             .AsNoTracking()
-            .Where(b => b.CustomerId == customerId)
+            .Where(b => b.CustomerId == customerId && b.Status == BookingStatus.Booked)
             .AnyAsync(
                 b =>
                     b.TimetableSchedule.StartTime < endTime

@@ -1,5 +1,27 @@
 # Rezerv Backend
 
+## Project Setup
+
+### 1. Setup MySql
+
+```
+docker run -d --name rezerv-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=rezerv mysql:8.4
+```
+
+### 2. Migrate and Seed Data
+
+Change dir to Persistence folder
+
+```
+cd ./src/Persistence/
+```
+
+Migrate and seed data
+
+```
+cd ./src/Persistence/
+```
+
 ## 1. Clean Architecture Project Setup
 
 My usual Project skeleton to startup the assignment

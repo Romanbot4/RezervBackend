@@ -2,13 +2,41 @@
 
 ## Project Setup
 
-### 1. Setup MySql
+### Option A. Docker Compose (one command)
+
+Brings up MySql, Redis, applies the migration with the seed data, then starts the api on port 3000.
+
+```
+docker compose up --build
+```
+
+Swagger is on http://localhost:3000/swagger and / redirects there.
+The api waits for MySql and Redis and migrations to exit 0 before it starts.
+
+Stop
+
+```
+docker compose down
+```
+
+Stop and Delete the DB
+
+```
+docker compose down -v    stop and delete the database away
+```
+
+If you already ran the standalone `docker run` for MySql or Redis, remove those first.
+They hold the same names and ports.
+
+### Option B. Run it yourself
+
+#### 1. Setup MySql
 
 ```
 docker run -d --name rezerv-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=rezerv mysql:8.4
 ```
 
-### 2. Migrate and Seed Data
+#### 2. Migrate and Seed Data
 
 Change dir to Persistence folder
 

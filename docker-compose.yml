@@ -1,0 +1,68 @@
+name: rezerv
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: rezerv-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: rezerv
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    container_name: rezerv-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  # runs dotnet ef database update once, then exits. the api waits for it.
+  migrate:
+    build:
+      context: .
+      target: publish
+    container_name: rezerv-migrate
+    working_dir: /Rezerv/src/Persistence
+    command: ["dotnet", "ef", "database", "update"]
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=mysql;Port=3306;Database=rezerv;User=root;Password=root;AllowPublicKeyRetrieval=true;SslMode=None"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build:
+      context: .
+    container_name: rezerv-api
+    ports:
+      - "3000:3000"
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=mysql;Port=3306;Database=rezerv;User=root;Password=root;AllowPublicKeyRetrieval=true;SslMode=None"
+      Redis__ConnectionString: "redis:6379"
+      Jwt__AccessTokenKey: "oZWn2taJm2CYZj4epCjJenyxCpKQulYUKQyXMf1I3ft"
+      Jwt__RefreshTokenKey: "sdqStZsjnUnZq32XeQmDZOf3Ppf2agzOG22RvHoAFEM"
+      Jwt__AccesTokenLifeSpanInMinutes: "120"
+      Jwt__RefreshTokenLifeSpanInMinutes: "10080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  mysql-data:

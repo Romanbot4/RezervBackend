@@ -2,7 +2,11 @@
 
 ## Project Setup
 
-### Option A. Docker Compose (one command)
+### PDF file is located at "./RezervERD.pdf"
+
+![Rezerv database schema](RezervERD.jpg)
+
+### Method A. Docker Compose (fast)
 
 Brings up MySql, Redis, applies the migration with the seed data, then starts the api on port 3000.
 
@@ -28,7 +32,7 @@ docker compose down -v    stop and delete the database away
 If you already ran the standalone `docker run` for MySql or Redis, remove those first.
 They hold the same names and ports.
 
-### Option B. Run it yourself
+### Method B. Run it manually
 
 #### 1. Setup MySql
 
@@ -320,25 +324,11 @@ Measured on a fresh database
 ## 14. Database Schema (ERD)
 
 The doc asks for an ERD or schema documentation as a deliverable so I drew one properly instead of
-writing the tables out by hand.
-
-![Rezerv database schema](docs/erd/rezerv.svg)
-
-Files live under `docs/erd`
+writing the tables out by hand. The diagram is up at the top, under section 1.
 
 ```
-docs/erd/rezerv.dot     graphviz source, the file to edit
-docs/erd/rezerv.svg     the diagram
-docs/erd/rezerv.png     same at 200 dpi
-docs/erd/rezerv.pdf     same for printing
-docs/erd/rezerv.dbml    same schema in DBML, paste into dbdiagram.io if you want to click around
-```
-
-Rendering it
-
-```
-make -C docs/erd          needs brew install graphviz
-make -C docs/erd docker   no local install, builds a tiny alpine image
+RezervERD.jpg    the diagram
+RezervERD.pdf    same for printing
 ```
 
 - I pulled the columns, types, nullability, delete rules and indexes out of `information_schema` on

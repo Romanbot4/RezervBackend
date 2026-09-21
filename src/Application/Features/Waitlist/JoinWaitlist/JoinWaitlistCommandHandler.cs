@@ -1,14 +1,14 @@
+using Application.Abstractions.Messaging;
 using Application.Abstractions.Services;
 using Application.Features.CustomerPackage.Mappers;
 using Application.Features.WaitList.Mappers;
 using Contract.Waitlist;
 using Core.Primitives.Result;
-using MediatR;
 
 namespace Application.Features.Waitlist.JoinWaitlist;
 
 public class JoinWaitlistCommandHandler(IBookingService booking)
-    : IRequestHandler<JoinWaitlistCommand, Result<JoinWaitlistResponse>>
+    : ICommandHandler<JoinWaitlistCommand, JoinWaitlistResponse>
 {
     public async Task<Result<JoinWaitlistResponse>> Handle(
         JoinWaitlistCommand request,

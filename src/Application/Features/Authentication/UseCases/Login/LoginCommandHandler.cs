@@ -1,3 +1,4 @@
+using Application.Abstractions.Messaging;
 using Application.Abstractions.Repositories;
 using Application.Abstractions.Services;
 using Application.Features.Authentication.Mappers;
@@ -5,7 +6,6 @@ using Application.Features.Customer.Mappers;
 using Contract.Authentication;
 using Core.Exception.NetworkException;
 using Core.Primitives.Result;
-using MediatR;
 
 namespace Application.Features.Authentication.UseCases.Login;
 
@@ -13,7 +13,7 @@ public class LoginCommandHandler(
     ICustomerRepository customers,
     IHashPasswordService hashPasswordService,
     IJwtTokenService jwtTokenService
-) : IRequestHandler<LoginCommand, Result<LoginResponse>>
+) : ICommandHandler<LoginCommand, LoginResponse>
 {
     public async Task<Result<LoginResponse>> Handle(
         LoginCommand request,

@@ -1,5 +1,4 @@
 using Application.Abstractions.Database;
-using Application.Abstractions.Database.Types;
 using Application.Database;
 using Core.Exception.NetworkException;
 using Core.Primitives.Entity;
@@ -13,7 +12,7 @@ public abstract class GenericRepository<TEntity>(IDbContext dbContext) : IGeneri
     protected readonly IDbContext _dbContext = dbContext;
     protected readonly IQueryable<TEntity> _query = dbContext.Set<TEntity>().AsQueryable();
 
-    public virtual async Task<TEntity> GetByIdAsync(
+    public virtual async Task<TEntity?> GetByIdAsync(
         Guid id,
         Func<IQueryable<TEntity>, IQueryable<TEntity>>? alterQuery = null,
         CancellationToken cancellationToken = default
@@ -25,7 +24,7 @@ public abstract class GenericRepository<TEntity>(IDbContext dbContext) : IGeneri
             query = alterQuery(query) ?? query;
         }
 
-        return await query.Where(e => e.Id == id).SingleAsync(cancellationToken);
+        return await query.Where(e => e.Id == id).SingleOrDefaultAsync(cancellationToken);
     }
 
     public virtual async Task<ICollection<TEntity>> GetRangeAsync(
@@ -49,45 +48,6 @@ public abstract class GenericRepository<TEntity>(IDbContext dbContext) : IGeneri
             query = query.Take((int)limit);
         }
         return await query.ToListAsync(cancellationToken);
-    }
-
-    public virtual async Task<PaginatedResult<TEntity>> GetPaginatedAsync(
-        int pageSize,
-        int pageIndex,
-        Func<IQueryable<TEntity>, IQueryable<TEntity>>? alterQuery = null,
-        CancellationToken cancellationToken = default
-    )
-    {
-        var query = _query;
-
-        if (alterQuery != null)
-        {
-            query = alterQuery(query) ?? query;
-        }
-
-        var effectiveLimit = Math.Min(100, pageSize);
-        var limit = effectiveLimit;
-
-        var data = await query
-            .Skip(pageIndex * effectiveLimit)
-            .Take(limit)
-            .ToListAsync(cancellationToken);
-
-        var total = await query.CountAsync(cancellationToken);
-        var totalPages = (int)Math.Ceiling(total / (double)pageSize);
-        var hasNext = pageIndex < totalPages - 1;
-
-        return new PaginatedResult<TEntity>(
-            Data: [.. data.Take(effectiveLimit)],
-            Pagination: new PaginationInfo(
-                PageIndex: pageIndex,
-                PageSize: pageSize,
-                Total: total,
-                TotalPages: totalPages,
-                HasNext: hasNext,
-                HasPrevious: pageIndex > 0
-            )
-        );
     }
 
     public virtual async Task<TEntity> InsertAsync(

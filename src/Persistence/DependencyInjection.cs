@@ -32,7 +32,15 @@ public static class DependencyInjection
             services.GetRequiredService<ApplicationDbContext>()
         );
 
+        services.AddScoped<IBusinessRepository, BusinessRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IPackageRepository, PackageRepository>();
+        services.AddScoped<ICustomerPackageRepository, CustomerPackageRepository>();
+        services.AddScoped<ITimetableScheduleRepository, TimetableScheduleRepository>();
+        services.AddScoped<IBookingRepository, BookingRepository>();
+        services.AddScoped<IWaitlistRepository, WaitlistRepository>();
+        services.AddScoped<ICreditTransactionRepository, CreditTransactionRepository>();
+
         return services;
     }
 }

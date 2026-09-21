@@ -1,6 +1,264 @@
-@WebApi_HostAddress = http://localhost:5294
+@WebApi_HostAddress = http://localhost:3000
 
-GET {{WebApi_HostAddress}}/weatherforecast/
+# @name login
+POST {{WebApi_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "kyaw.pyae.phyo@notgmail.com",
+  "password": "Password123!"
+}
+
+###
+
+@accessToken = {{login.response.body.token.accessToken}}
+
+GET {{WebApi_HostAddress}}/api/businesses
 Accept: application/json
+
+###
+
+GET {{WebApi_HostAddress}}/api/packages
+Accept: application/json
+
+###
+
+GET {{WebApi_HostAddress}}/api/packages?businessId=cf24fc77-facf-8d6e-9654-5b07b6cc8ad6
+Accept: application/json
+
+###
+
+GET {{WebApi_HostAddress}}/api/packages/mine
+Accept: application/json
+Authorization: Bearer {{accessToken}}
+
+###
+
+GET {{WebApi_HostAddress}}/api/timetable
+Accept: application/json
+
+###
+
+GET {{WebApi_HostAddress}}/api/timetable?businessId=cf24fc77-facf-8d6e-9654-5b07b6cc8ad6&date=2026-09-22
+Accept: application/json
+
+###
+
+GET {{WebApi_HostAddress}}/api/bookings/mine
+Accept: application/json
+Authorization: Bearer {{accessToken}}
+
+###
+
+// Business mismatch. Fitness package against a Rhino Yoga class
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "29430c46-33b6-e642-5431-7df2fc70a73e",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Package expired
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "d7a37bf5-57c5-50f3-380e-c504e9bf207d",
+  "customerPackageId": "95648397-c42c-7474-58f8-201d841312ee",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Insufficient credits
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "d7a37bf5-57c5-50f3-380e-c504e9bf207d",
+  "customerPackageId": "b856b0b8-3ec5-cf36-79a9-fb7b3b265e9d",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Package belongs to another customer
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "d7a37bf5-57c5-50f3-380e-c504e9bf207d",
+  "customerPackageId": "5fc76cf4-e225-43a7-141a-5e59cbb18f9e",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Already booked this schedule
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "c52fa314-f98e-013b-b5d1-f85c7f303eb4",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Schedule is full and the waitlist was declined
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "c35a8c92-23bb-7c32-4e38-b8f537a40571",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313",
+  "joinWaitlistIfFull": false
+}
+
+###
+
+// Schedule already started. Sunrise Bootcamp finished before the seed was written
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "71cf8a55-66de-661c-e284-7b0100fed16c",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Everything below sucesss and change data.
+
+// Morning Upper Body 09:00 to 10:00. Credits 8 to 7
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "881ee867-8186-f02e-da88-63950875320e",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Overlapping schedule check. Above vs Morning Cardio 09:30 to 10:30
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "d7a37bf5-57c5-50f3-380e-c504e9bf207d",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Back to back check. Fist booking vs Upper Body(starts 10AM)
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "9b19dfb0-d397-d788-6589-e26716010aee",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Fallback to waitlist feature. Also Credit reserved.
+POST {{WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "c35a8c92-23bb-7c32-4e38-b8f537a40571",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313",
+  "joinWaitlistIfFull": true
+}
+
+###
+
+// Already in waitlist (same waitlit above)
+POST {{WebApi_HostAddress}}/api/waitlist
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "c35a8c92-23bb-7c32-4e38-b8f537a40571",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313"
+}
+
+###
+
+// Business mismatch on the waitlist
+POST {{WebApi_HostAddress}}/api/waitlist
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "scheduleId": "29430c46-33b6-e642-5431-7df2fc70a73e",
+  "customerPackageId": "85476e89-a7ff-0fde-07a2-033e3752c313"
+}
+
+###
+
+// Booking belongs to another customer
+POST {{WebApi_HostAddress}}/api/bookings/cancel
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "bookingId": "e51e626a-b093-7038-a117-abe40eaa6c21"
+}
+
+###
+
+// Cancelled well before the class starts. 1 credit refunded
+POST {{WebApi_HostAddress}}/api/bookings/cancel
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "bookingId": "c3f94e50-59f2-471b-49ca-a6ba2dff7aab"
+}
+
+###
+
+// Cancel the booking already cancelled (Same above)
+POST {{WebApi_HostAddress}}/api/bookings/cancel
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "bookingId": "c3f94e50-59f2-471b-49ca-a6ba2dff7aab"
+}
+
+###
+
+// Cancelled within 4 hours before start. No refund logic.
+POST {{WebApi_HostAddress}}/api/bookings/cancel
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "bookingId": "9dc4baac-f241-50fd-b33b-126523827ee4"
+}
 
 ###

@@ -35,9 +35,7 @@ public static class BookingErrors
         new ForbiddenException($"You already waiting for this schedule");
 
     public static CoreException ScheduleFull() =>
-        new UnprocessableException(
-            "This schedule is fully booked. Join the waitlist to be booked automatically if a slot frees up."
-        );
+        new UnprocessableException("This schedule is fully booked. You can join the waitlist.");
 
     public static CoreException BookingNotActive() =>
         new UnprocessableException("This booking is not active and cannot be cancelled");

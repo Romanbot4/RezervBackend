@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <ItemGroup>
     <ProjectReference Include="..\src\Application\Application.csproj" />
     <ProjectReference Include="..\src\Infrastructure\Infrastructure.csproj" />
@@ -14,5 +13,4 @@
     </PackageReference>
     <PackageReference Include="xunit.v3" />
   </ItemGroup>
-
 </Project>

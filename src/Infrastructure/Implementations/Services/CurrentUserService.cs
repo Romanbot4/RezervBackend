@@ -10,7 +10,8 @@ public class CurrentUserService(IHttpContextAccessor httpContextAccessor) : ICur
         get
         {
             var value = httpContextAccessor.HttpContext?.User.FindFirst("sub");
-            return value == null ? null : Guid.Parse(value.Value);
+
+            return Guid.TryParse(value?.Value, out var customerId) ? customerId : null;
         }
     }
 }

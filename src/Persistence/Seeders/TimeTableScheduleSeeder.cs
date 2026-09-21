@@ -24,6 +24,9 @@ public class TimetableScheduleSeeder : IEntityTypeConfiguration<TimetableSchedul
         "time_table_early_bird_cardio"
     );
     public static readonly Guid ZendayaYogaId = DeterministicGuid.From("time_table_zendaya_yoga");
+    public static readonly Guid SunriseBootcampId = DeterministicGuid.From(
+        "time_table_sunrise_bootcamp"
+    );
 
     public void Configure(EntityTypeBuilder<TimetableScheduleEntity> builder)
     {
@@ -104,6 +107,17 @@ public class TimetableScheduleSeeder : IEntityTypeConfiguration<TimetableSchedul
                 todayMidnight.AddDays(3).AddHours(8),
                 availableSlots: 8,
                 bookedCount: 1
+            ),
+            // Already finished schedule to check failure on booking
+            Schedule(
+                SunriseBootcampId,
+                rezerveFitnessId,
+                "Sunrise Bootcamp",
+                "Chris Hemsworth",
+                now.AddHours(-3),
+                now.AddHours(-2),
+                availableSlots: 10,
+                bookedCount: 0
             ),
             Schedule(
                 ZendayaYogaId,

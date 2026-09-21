@@ -1,4 +1,5 @@
 using Application.Abstractions.DateTime;
+using Application.Abstractions.Messaging;
 using Application.Abstractions.Repositories;
 using Application.Abstractions.Services;
 using Application.Database;
@@ -10,7 +11,6 @@ using Core.Primitives.Result;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.Errors;
-using MediatR;
 
 namespace Application.Features.Bookings.UseCases.CancelBooking;
 
@@ -33,7 +33,7 @@ public class CancelBookingCommandHandler(
     IWaitlistPromoter waitlistPromoter,
     IDateTime dateTime,
     IUnitOfWork unitOfWork
-) : IRequestHandler<CancelBookingCommand, Result<BookClassResponse>>
+) : ICommandHandler<CancelBookingCommand, BookClassResponse>
 {
     public async Task<Result<BookClassResponse>> Handle(
         CancelBookingCommand request,
@@ -112,20 +112,10 @@ public class CancelBookingCommandHandler(
 
         var promotion = await waitlistPromoter.PromoteNextAsync(schedule, cancellationToken);
 
-        var updatedCustomerPackage = await customerPackages.GetByIdAsync(
-            booking.CustomerPackageId,
-            cancellationToken: cancellationToken
-        );
-
-        var updatedBooking = await bookings.GetByIdAsync(
-            booking.Id,
-            cancellationToken: cancellationToken
-        );
-
         return new BookClassResponse(
             Outcome: BookingOutcome.Cancelled,
-            Booking: updatedBooking.ToBookingResponse(),
-            CustomerPackage: updatedCustomerPackage.ToCustomerPackageResponse(),
+            Booking: booking.ToBookingResponse(),
+            CustomerPackage: customerPackage.ToCustomerPackageResponse(),
             Waitlist: null
         );
     }

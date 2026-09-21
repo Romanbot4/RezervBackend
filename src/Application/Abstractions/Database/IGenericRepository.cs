@@ -1,4 +1,3 @@
-using Application.Abstractions.Database.Types;
 using Core.Primitives.Entity;
 
 namespace Application.Abstractions.Database;
@@ -6,7 +5,7 @@ namespace Application.Abstractions.Database;
 public interface IGenericRepository<TEntity>
     where TEntity : AggregateRoot
 {
-    Task<TEntity> GetByIdAsync(
+    Task<TEntity?> GetByIdAsync(
         Guid id,
         Func<IQueryable<TEntity>, IQueryable<TEntity>>? alterQuery = null,
         CancellationToken cancellationToken = default
@@ -15,13 +14,6 @@ public interface IGenericRepository<TEntity>
     Task<ICollection<TEntity>> GetRangeAsync(
         int? limit = null,
         int? offset = null,
-        Func<IQueryable<TEntity>, IQueryable<TEntity>>? alterQuery = null,
-        CancellationToken cancellationToken = default
-    );
-
-    Task<PaginatedResult<TEntity>> GetPaginatedAsync(
-        int pageSize,
-        int pageIndex,
         Func<IQueryable<TEntity>, IQueryable<TEntity>>? alterQuery = null,
         CancellationToken cancellationToken = default
     );

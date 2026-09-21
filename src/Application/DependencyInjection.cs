@@ -1,6 +1,7 @@
-﻿using Application.Abstractions.Services;
+using Application.Abstractions.Services;
 using Application.Configurations;
 using Application.Services;
+using Application.Validation;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,13 +15,20 @@ public static class DependencyInjection
         IConfiguration configuration
     )
     {
-        services.Configure<JwtConfigurations>(options =>
+        services.Configure<JwtConfigurations>(
             configuration.GetSection(JwtConfigurations.SettingKey)
         );
 
         services.AddValidatorsFromAssembly(AssemblyReference.Assembly);
 
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(AssemblyReference.Assembly);
+            cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+        });
+
         services.AddScoped<IBookingService, BookingService>();
+        services.AddScoped<IWaitlistPromoter, WaitlistPromoter>();
 
         return services;
     }

@@ -1,3 +1,4 @@
+using Application.Abstractions.Messaging;
 using Application.Abstractions.Services;
 using Application.Features.Bookings.Mappers;
 using Application.Features.CustomerPackage.Mappers;
@@ -5,12 +6,11 @@ using Application.Features.WaitList.Mappers;
 using Contract.Bookings;
 using Core.Primitives.Result;
 using Domain.Errors;
-using MediatR;
 
 namespace Application.Features.Bookings.UseCases.BookClass;
 
 public class BookClassCommandHandler(IBookingService booking)
-    : IRequestHandler<BookClassCommand, Result<BookClassResponse>>
+    : ICommandHandler<BookClassCommand, BookClassResponse>
 {
     public async Task<Result<BookClassResponse>> Handle(
         BookClassCommand request,

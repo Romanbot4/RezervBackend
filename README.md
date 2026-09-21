@@ -194,8 +194,8 @@ Booking count must never exceed the available slots even when many users book at
 My booking code currently check try avoid double booking with race condition.
 But on acutal prod server there are multiple process spawning and competing requests for same db row
 There is a gap between read and write which can still leave an opening.
-I will use the db transaction and commit to handle this. The doc say to use Raddis for both concurrency
-and caching. Raddis lock is a good idead but db transaction is also nice to have.
+I will use the db transaction and commit to handle this. The doc say to use redis for both concurrency
+and caching. Redis lock is a good idead but db transaction is also nice to have.
 
 current issues
 
@@ -231,3 +231,24 @@ Changes
 
 I did the same for every credit movement. TryConsumeCredit, TryReserveCredit,
 TryConsumeReservedCredit, RefundCredit and ReleaseReservation.
+
+## 12. Redis Lock
+
+The conditional update already stops the overbooking so this is not what makes it correct.
+I added the lock on top as an extra guard.
+
+```
+SET lock:schedule:{id} {random token} NX PX 5000
+```
+
+- If redis is down, service still work. I added a bypass
+
+```
+catch (RedisException exception)
+{
+    return new UnlockedHandle(key);
+}
+```
+
+- the lock is taken before BeginTransactionAsync so the lock always covers the transaction
+- if the wait times out the request gets 422 ScheduleBusy so the user can retry

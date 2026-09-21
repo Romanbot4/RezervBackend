@@ -10,8 +10,11 @@ using Domain.Errors;
 
 namespace Application.Features.Bookings.UseCases.BookClass;
 
-public class BookClassCommandHandler(IBookingService booking, IUnitOfWork unitOfWork)
-    : ICommandHandler<BookClassCommand, BookClassResponse>
+public class BookClassCommandHandler(
+    IBookingService booking,
+    IDistributedLockService locks,
+    IUnitOfWork unitOfWork
+) : ICommandHandler<BookClassCommand, BookClassResponse>
 {
     public async Task<Result<BookClassResponse>> Handle(
         BookClassCommand request,
@@ -23,6 +26,14 @@ public class BookClassCommandHandler(IBookingService booking, IUnitOfWork unitOf
             request.CustomerPackageId,
             cancellationToken
         );
+
+        await using var scheduleLock =
+            await locks.AcquireAsync(
+                LockKeys.Schedule(context.Schedule.Id),
+                LockKeys.Ttl,
+                LockKeys.Wait,
+                cancellationToken
+            ) ?? throw BookingErrors.ScheduleBusy();
 
         await using var transaction = await unitOfWork.BeginTransactionAsync(cancellationToken);
 

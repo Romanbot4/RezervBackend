@@ -32,6 +32,7 @@ public class CancelBookingCommandHandler(
     ICreditTransactionRepository creditTransactions,
     ICurrentUserService currentUser,
     IWaitlistPromoter waitlistPromoter,
+    IDistributedLockService locks,
     IDateTime dateTime,
     IUnitOfWork unitOfWork
 ) : ICommandHandler<CancelBookingCommand, BookClassResponse>
@@ -65,6 +66,14 @@ public class CancelBookingCommandHandler(
                 alterQuery: query => query.AsNoTracking(),
                 cancellationToken: cancellationToken
             ) ?? throw new NotFoundException("Schedule Not Found");
+
+        await using var scheduleLock =
+            await locks.AcquireAsync(
+                LockKeys.Schedule(schedule.Id),
+                LockKeys.Ttl,
+                LockKeys.Wait,
+                cancellationToken
+            ) ?? throw BookingErrors.ScheduleBusy();
 
         await using var transaction = await unitOfWork.BeginTransactionAsync(cancellationToken);
 

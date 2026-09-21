@@ -9,8 +9,11 @@ using Domain.Errors;
 
 namespace Application.Features.Waitlist.JoinWaitlist;
 
-public class JoinWaitlistCommandHandler(IBookingService booking, IUnitOfWork unitOfWork)
-    : ICommandHandler<JoinWaitlistCommand, JoinWaitlistResponse>
+public class JoinWaitlistCommandHandler(
+    IBookingService booking,
+    IDistributedLockService locks,
+    IUnitOfWork unitOfWork
+) : ICommandHandler<JoinWaitlistCommand, JoinWaitlistResponse>
 {
     public async Task<Result<JoinWaitlistResponse>> Handle(
         JoinWaitlistCommand request,
@@ -22,6 +25,14 @@ public class JoinWaitlistCommandHandler(IBookingService booking, IUnitOfWork uni
             request.CustomerPackageId,
             cancellationToken
         );
+
+        await using var scheduleLock =
+            await locks.AcquireAsync(
+                LockKeys.Schedule(context.Schedule.Id),
+                LockKeys.Ttl,
+                LockKeys.Wait,
+                cancellationToken
+            ) ?? throw BookingErrors.ScheduleBusy();
 
         await using var transaction = await unitOfWork.BeginTransactionAsync(cancellationToken);
 

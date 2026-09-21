@@ -37,6 +37,11 @@ public static class BookingErrors
     public static CoreException ScheduleFull() =>
         new UnprocessableException("This schedule is fully booked. You can join the waitlist.");
 
+    public static CoreException ScheduleBusy() =>
+        new UnprocessableException(
+            "This schedule is handling too many requests right now. Please try again."
+        );
+
     public static CoreException BookingNotActive() =>
         new UnprocessableException("This booking is not active and cannot be cancelled");
 }

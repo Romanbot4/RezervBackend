@@ -1,11 +1,12 @@
+using Application.Abstractions.Database;
 using Application.Abstractions.DateTime;
 using Application.Abstractions.Repositories;
 using Application.Abstractions.Services;
-using Application.Database;
 using Core.Exception.NetworkException;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.Errors;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services;
 
@@ -33,8 +34,11 @@ public class BookingService(
         var now = dateTime.UtcNow;
 
         var schedule =
-            await schedules.GetByIdAsync(scheduleId, cancellationToken: cancellationToken)
-            ?? throw new NotFoundException("Schedule Not Found");
+            await schedules.GetByIdAsync(
+                scheduleId,
+                alterQuery: query => query.AsNoTracking(),
+                cancellationToken: cancellationToken
+            ) ?? throw new NotFoundException("Schedule Not Found");
 
         if (schedule.HasStarted(now))
         {
@@ -44,6 +48,7 @@ public class BookingService(
         var customerPackage =
             await customerPackages.GetByIdAsync(
                 customerPackageId,
+                alterQuery: query => query.AsNoTracking(),
                 cancellationToken: cancellationToken
             ) ?? throw new NotFoundException("Customer Package Not Found");
 
@@ -99,6 +104,16 @@ public class BookingService(
             bookedAt: now
         );
 
+        if (!await schedules.TryReserveSlotAsync(schedule.Id, cancellationToken))
+        {
+            throw BookingErrors.ScheduleFull();
+        }
+
+        if (!await customerPackages.TryConsumeCreditAsync(customerPackage.Id, cancellationToken))
+        {
+            throw BookingErrors.InsufficientCredits();
+        }
+
         await bookings.InsertAsync(booking, cancellationToken);
 
         schedule.ReserveSlot();
@@ -136,10 +151,23 @@ public class BookingService(
             bookedAt: now
         );
 
+        if (!await schedules.TryReserveSlotAsync(schedule.Id, cancellationToken))
+        {
+            throw BookingErrors.ScheduleFull();
+        }
+
+        if (
+            !await customerPackages.TryConsumeReservedCreditAsync(
+                customerPackage.Id,
+                cancellationToken
+            )
+        )
+        {
+            throw BookingErrors.InsufficientCredits();
+        }
+
         await bookings.InsertAsync(booking, cancellationToken);
 
-        // The seat released by the cancellation is taken here, so the freed capacity is handed to
-        // the waitlist rather than left on the floor.
         schedule.ReserveSlot();
 
         customerPackage.ConsumeReserveCredits(CreditsPerSchedule, now);
@@ -199,6 +227,11 @@ public class BookingService(
         if (await waitlist.IsWaitingAsync(customerId, schedule.Id, cancellationToken))
         {
             throw BookingErrors.AlreadyWaiting();
+        }
+
+        if (!await customerPackages.TryReserveCreditAsync(customerPackage.Id, cancellationToken))
+        {
+            throw BookingErrors.InsufficientCredits();
         }
 
         customerPackage.ReservesCredits(CreditsPerSchedule, now);

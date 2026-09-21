@@ -1,3 +1,4 @@
+using Application.Abstractions.Database;
 using Application.Abstractions.Messaging;
 using Application.Abstractions.Services;
 using Application.Features.Bookings.Mappers;
@@ -9,7 +10,7 @@ using Domain.Errors;
 
 namespace Application.Features.Bookings.UseCases.BookClass;
 
-public class BookClassCommandHandler(IBookingService booking)
+public class BookClassCommandHandler(IBookingService booking, IUnitOfWork unitOfWork)
     : ICommandHandler<BookClassCommand, BookClassResponse>
 {
     public async Task<Result<BookClassResponse>> Handle(
@@ -23,6 +24,8 @@ public class BookClassCommandHandler(IBookingService booking)
             cancellationToken
         );
 
+        await using var transaction = await unitOfWork.BeginTransactionAsync(cancellationToken);
+
         if (!context.Schedule.HasAvailableSlot())
         {
             if (!request.JoinWaitlistIfFull)
@@ -31,6 +34,8 @@ public class BookClassCommandHandler(IBookingService booking)
             }
 
             var entry = await booking.JoinWaitlistAsync(context, cancellationToken);
+
+            await transaction.CommitAsync(cancellationToken);
 
             return Result<BookClassResponse>.Success(
                 new BookClassResponse(
@@ -45,6 +50,8 @@ public class BookClassCommandHandler(IBookingService booking)
         await booking.EnsureNoOverlappingBookingAsync(context, cancellationToken);
 
         var created = await booking.BookAsync(context, cancellationToken);
+
+        await transaction.CommitAsync(cancellationToken);
 
         return Result<BookClassResponse>.Success(
             new BookClassResponse(

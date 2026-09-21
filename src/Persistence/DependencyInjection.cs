@@ -1,4 +1,5 @@
-﻿using Application.Abstractions.DateTime;
+﻿using Application.Abstractions.Database;
+using Application.Abstractions.DateTime;
 using Application.Abstractions.Repositories;
 using Application.Database;
 using Microsoft.EntityFrameworkCore;

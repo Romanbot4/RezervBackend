@@ -1,8 +1,8 @@
+using Application.Abstractions.Database;
 using Application.Abstractions.DateTime;
 using Application.Abstractions.Messaging;
 using Application.Abstractions.Repositories;
 using Application.Abstractions.Services;
-using Application.Database;
 using Application.Features.Bookings.Mappers;
 using Application.Features.CustomerPackage.Mappers;
 using Contract.Bookings;
@@ -11,6 +11,7 @@ using Core.Primitives.Result;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.Errors;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Bookings.UseCases.CancelBooking;
 
@@ -61,10 +62,15 @@ public class CancelBookingCommandHandler(
         var schedule =
             await schedules.GetByIdAsync(
                 booking.TimetableScheduleId,
+                alterQuery: query => query.AsNoTracking(),
                 cancellationToken: cancellationToken
             ) ?? throw new NotFoundException("Schedule Not Found");
 
+        await using var transaction = await unitOfWork.BeginTransactionAsync(cancellationToken);
+
         var result = await CancelBooking(booking, schedule, now, cancellationToken);
+
+        await transaction.CommitAsync(cancellationToken);
 
         return Result<BookClassResponse>.Success(result);
     }
@@ -79,6 +85,7 @@ public class CancelBookingCommandHandler(
         var customerPackage =
             await customerPackages.GetByIdAsync(
                 booking.CustomerPackageId,
+                alterQuery: query => query.AsNoTracking(),
                 cancellationToken: cancellationToken
             ) ?? throw new NotFoundException("Customer package not found");
 
@@ -87,11 +94,13 @@ public class CancelBookingCommandHandler(
 
         booking.Cancel(now, refundApplied);
 
-        schedule.ReleaseSlot();
+        await schedules.ReleaseSlotAsync(schedule.Id, cancellationToken);
 
         if (refundApplied)
         {
             await customerPackages.RefundCreditAsync(booking.CustomerPackageId, cancellationToken);
+
+            customerPackage.RemainingCredits += 1;
 
             var creditTransaction = new CreditTransactionEntity(
                 id: Guid.NewGuid(),

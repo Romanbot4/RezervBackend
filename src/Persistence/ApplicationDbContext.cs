@@ -1,3 +1,4 @@
+using Application.Abstractions.Database;
 using Application.Abstractions.DateTime;
 using Application.Database;
 using Core.Exception.NetworkException;
@@ -6,6 +7,7 @@ using Core.Primitives.Event;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Persistence.Common;
 
 namespace Persistence;
 
@@ -30,6 +32,13 @@ public class ApplicationDbContext(
     EntityEntry<TEntity> IDbContext.Entry<TEntity>(TEntity entity)
     {
         return Entry(entity);
+    }
+
+    public async Task<ITransaction> BeginTransactionAsync(
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new EfTransaction(await Database.BeginTransactionAsync(cancellationToken));
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

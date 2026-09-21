@@ -187,3 +187,47 @@ POST /api/packages/purchase
 - writes a Purchase credit transaction ledger to show where the credits came from
 - an inactive package cannot be bought
 - I tested that the credits that I bought are usable by booking a class with the new package after buying it
+
+## 11. Concurrency
+
+Booking count must never exceed the available slots even when many users book at the same time.
+My booking code currently check try avoid double booking with race condition.
+But on acutal prod server there are multiple process spawning and competing requests for same db row
+There is a gap between read and write which can still leave an opening.
+I will use the db transaction and commit to handle this. The doc say to use Raddis for both concurrency
+and caching. Raddis lock is a good idead but db transaction is also nice to have.
+
+current issues
+
+- The old code read the count, checked it, then wrote it back using unit of work pattern only.
+
+```
+if (!schedule.HasAvailableSlot()) // reads
+schedule.ReserveSlot();           // make changes
+await unitOfWork.SaveChangesAsync() // writes using UoW
+```
+
+With 5 slots and BookedCount 4, two requests can both read 4, both see a free slot and both write 5.
+Two bookings for one seat. The gap between the read and the write is the problem.
+
+### Conditional update
+
+So I moved the check into the update itself. So, basically read and update at the same time
+with no gap between read and write.
+
+```
+.Where(cp => cp.Id == id && cp.RemainingCredits - cp.ReservedCredits >= 1)
+.ExecuteUpdateAsync(
+    setters => setters.SetProperty(cp => cp.RemainingCredits, cp => cp.RemainingCredits - 1),
+    cancellationToken
+);
+```
+
+Changes
+
+- added ITransaction and EfTransaction and BeginTransactionAsync on IUnitOfWork
+- BookClass, JoinWaitlist and CancelBooking now wrap their writes in one transaction
+- I trimmed one class down to 3 slots and fired 11 customers at it at the same time.
+
+I did the same for every credit movement. TryConsumeCredit, TryReserveCredit,
+TryConsumeReservedCredit, RefundCredit and ReleaseReservation.

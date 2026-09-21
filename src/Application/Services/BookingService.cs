@@ -173,12 +173,15 @@ public class BookingService(
 
         var creditTransaction = new CreditTransactionEntity(
             id: Guid.NewGuid(),
-            customerPackageId: entry.CustomerPackage.Id,
-            type: CreditTransactionType.Refund,
+            customerPackageId: entry.CustomerPackageId,
+            type: CreditTransactionType.ReleaseReservation,
             amount: CreditsPerSchedule,
-            reason: "Booking promoted from waitlist. Confirmed.",
+            reason: reason,
             occurredAt: now
-        );
+        )
+        {
+            WaitlistEntryId = entry.Id,
+        };
 
         await creditTransactions.InsertAsync(creditTransaction, cancellationToken);
 

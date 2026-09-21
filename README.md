@@ -22,6 +22,18 @@ Migrate and seed data
 dotnet ef database update
 ```
 
+Change Directory to WebApi module
+
+```
+cd ../../WebApi/
+```
+
+Run it (port : 3000 always)
+
+```
+dotnet watch
+```
+
 ## 1. Clean Architecture Project Setup
 
 My usual Project skeleton to startup the assignment

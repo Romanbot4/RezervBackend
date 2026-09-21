@@ -71,158 +71,158 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("3557bc85-adf6-4773-7520-438fb5cb9b0d"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("737feb5f-959d-7fc4-7be5-ad8d1aa70d38"),
                             CustomerPackageId = new Guid("5fc76cf4-e225-43a7-141a-5e59cbb18f9e"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("c35a8c92-23bb-7c32-4e38-b8f537a40571"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("bf528796-efdd-250a-a6ce-9e810197597c"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("2ca94917-7c1c-c44c-f798-5bca6920529a"),
                             CustomerPackageId = new Guid("66918386-aea8-7f33-3718-e71fc1f12f15"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("c35a8c92-23bb-7c32-4e38-b8f537a40571"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("1b5a3004-97ed-8de4-c6c5-560b4f0ac7a6"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("0ad7fa28-5f1f-6c53-2c96-8b774601dc73"),
                             CustomerPackageId = new Guid("4a64c343-d30f-8448-ef96-f73ff11df675"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("c35a8c92-23bb-7c32-4e38-b8f537a40571"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("ce3e4a7c-d048-c0fd-bd82-40bb08584353"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("fe6bc868-82b7-ffaf-306a-606b1c751280"),
                             CustomerPackageId = new Guid("e9b9025a-4fdb-2cb4-adee-804887d3e3be"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("c35a8c92-23bb-7c32-4e38-b8f537a40571"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("262061de-17d5-d76c-c698-c51447e1f7ee"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("e1f5adc4-4394-a3ae-edfa-f9ed517cb2cb"),
                             CustomerPackageId = new Guid("2fb0d3c6-1438-3255-f7ef-87871541eb5b"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("c35a8c92-23bb-7c32-4e38-b8f537a40571"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("e51e626a-b093-7038-a117-abe40eaa6c21"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("737feb5f-959d-7fc4-7be5-ad8d1aa70d38"),
                             CustomerPackageId = new Guid("5fc76cf4-e225-43a7-141a-5e59cbb18f9e"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("881ee867-8186-f02e-da88-63950875320e"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("c51a8972-3fa4-0c37-70a8-7f06b6187677"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("2ca94917-7c1c-c44c-f798-5bca6920529a"),
                             CustomerPackageId = new Guid("66918386-aea8-7f33-3718-e71fc1f12f15"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("881ee867-8186-f02e-da88-63950875320e"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("01c2a39c-3b93-108b-b9db-aaf8848cdb53"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("0ad7fa28-5f1f-6c53-2c96-8b774601dc73"),
                             CustomerPackageId = new Guid("4a64c343-d30f-8448-ef96-f73ff11df675"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("881ee867-8186-f02e-da88-63950875320e"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("9dc4baac-f241-50fd-b33b-126523827ee4"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("936557d8-b4ab-3fc4-54c8-bec7a61391de"),
                             CustomerPackageId = new Guid("85476e89-a7ff-0fde-07a2-033e3752c313"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("c52fa314-f98e-013b-b5d1-f85c7f303eb4"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("c3f94e50-59f2-471b-49ca-a6ba2dff7aab"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("936557d8-b4ab-3fc4-54c8-bec7a61391de"),
                             CustomerPackageId = new Guid("85476e89-a7ff-0fde-07a2-033e3752c313"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("03400720-bc13-511c-930e-0605aafa1bcf"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("338f054c-1ae9-5f44-c291-130ac15caa37"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("417f56ea-60be-a7d9-d576-69740730a6b4"),
                             CustomerPackageId = new Guid("c4ead12f-8460-c8cf-cd9f-4fed44975dc1"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("29430c46-33b6-e642-5431-7df2fc70a73e"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("fdf3c499-b6b3-e22c-9b98-c789d0ece471"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("2aedd076-ca5a-2959-f239-bf24255dd176"),
                             CustomerPackageId = new Guid("92c7d3cb-cd53-775b-e9e9-3b2b1c41cc6c"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("29430c46-33b6-e642-5431-7df2fc70a73e"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("4040b00e-0f05-8d60-01b6-9a18ad56689b"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            BookedAt = new DateTime(2026, 9, 20, 21, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            BookedAt = new DateTime(2026, 9, 21, 1, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("00484cfb-27be-2548-1aa6-a349c22204ac"),
                             CustomerPackageId = new Guid("23ebed7a-af0f-0861-235e-31cedec9ef5a"),
                             RefundApplied = false,
                             Status = 1,
                             TimetableScheduleId = new Guid("29430c46-33b6-e642-5431-7df2fc70a73e"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         });
                 });
 
@@ -256,18 +256,18 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             IsActive = true,
                             Name = "Rezerv Fitness",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("0d0238a1-a72d-7624-1a8f-99d6aee4c02a"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             IsActive = true,
                             Name = "Rhino Yoga Studio",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         });
                 });
 
@@ -351,101 +351,101 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("936557d8-b4ab-3fc4-54c8-bec7a61391de"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "kyaw.pyae.phyo@notgmail.com",
                             Name = "Kyaw Pyae Phyo",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("737feb5f-959d-7fc4-7be5-ad8d1aa70d38"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "zaw.myo.tun@notgmail.com",
                             Name = "Zaw Myo Tun",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("2ca94917-7c1c-c44c-f798-5bca6920529a"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "yan.naing.kyaw@notgmail.com",
                             Name = "Yan Naing Kyaw",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("0ad7fa28-5f1f-6c53-2c96-8b774601dc73"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "zheng.yu@notgmail.com",
                             Name = "Zheng Yu",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("fe6bc868-82b7-ffaf-306a-606b1c751280"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "eaint.pan@notgmail.com",
                             Name = "Eaint Pan",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("e1f5adc4-4394-a3ae-edfa-f9ed517cb2cb"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "bruce.will@notgmail.com",
                             Name = "Bruce Will",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("1e151057-ccf6-5a19-2d99-5b5041ac81f2"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "kim.jong.un@notgmail.com",
                             Name = "Kim Jong Un",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("a9103b4a-e548-6bcd-b239-f7c71c179881"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "donald.trump@notgmail.com",
                             Name = "Donald Trump",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("417f56ea-60be-a7d9-d576-69740730a6b4"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "steve.roger@notgmail.com",
                             Name = "Steve Roger",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("2aedd076-ca5a-2959-f239-bf24255dd176"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "tony.stark@notgmail.com",
                             Name = "Tony Stark",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("00484cfb-27be-2548-1aa6-a349c22204ac"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Email = "thor.odinson@notgmail.com",
                             Name = "Thor Odinson",
                             PasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==",
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         });
                 });
 
@@ -501,184 +501,184 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("85476e89-a7ff-0fde-07a2-033e3752c313"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("936557d8-b4ab-3fc4-54c8-bec7a61391de"),
-                            ExpiresAt = new DateTime(2026, 11, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 11, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("875d6f79-65ce-4ccf-0dbf-12605df3e09d"),
-                            PurchasedAt = new DateTime(2026, 9, 19, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 19, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 8,
                             ReservedCredits = 0,
                             TotalCredits = 10,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("95648397-c42c-7474-58f8-201d841312ee"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("936557d8-b4ab-3fc4-54c8-bec7a61391de"),
-                            ExpiresAt = new DateTime(2026, 9, 16, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 9, 16, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("a26dfc2b-0795-f479-c6f1-e939f171b16b"),
-                            PurchasedAt = new DateTime(2026, 8, 17, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 8, 17, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 5,
                             ReservedCredits = 0,
                             TotalCredits = 5,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("b856b0b8-3ec5-cf36-79a9-fb7b3b265e9d"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("936557d8-b4ab-3fc4-54c8-bec7a61391de"),
-                            ExpiresAt = new DateTime(2026, 10, 11, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 10, 11, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("a26dfc2b-0795-f479-c6f1-e939f171b16b"),
-                            PurchasedAt = new DateTime(2026, 9, 11, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 11, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 0,
                             ReservedCredits = 0,
                             TotalCredits = 5,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("5fc76cf4-e225-43a7-141a-5e59cbb18f9e"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("737feb5f-959d-7fc4-7be5-ad8d1aa70d38"),
-                            ExpiresAt = new DateTime(2026, 11, 17, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 11, 17, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("875d6f79-65ce-4ccf-0dbf-12605df3e09d"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 8,
                             ReservedCredits = 0,
                             TotalCredits = 10,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("66918386-aea8-7f33-3718-e71fc1f12f15"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("2ca94917-7c1c-c44c-f798-5bca6920529a"),
-                            ExpiresAt = new DateTime(2026, 11, 17, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 11, 17, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("875d6f79-65ce-4ccf-0dbf-12605df3e09d"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 8,
                             ReservedCredits = 0,
                             TotalCredits = 10,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("4a64c343-d30f-8448-ef96-f73ff11df675"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("0ad7fa28-5f1f-6c53-2c96-8b774601dc73"),
-                            ExpiresAt = new DateTime(2026, 11, 17, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 11, 17, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("875d6f79-65ce-4ccf-0dbf-12605df3e09d"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 8,
                             ReservedCredits = 0,
                             TotalCredits = 10,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("e9b9025a-4fdb-2cb4-adee-804887d3e3be"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("fe6bc868-82b7-ffaf-306a-606b1c751280"),
-                            ExpiresAt = new DateTime(2026, 10, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 10, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("a26dfc2b-0795-f479-c6f1-e939f171b16b"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 4,
                             ReservedCredits = 0,
                             TotalCredits = 5,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("2fb0d3c6-1438-3255-f7ef-87871541eb5b"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("e1f5adc4-4394-a3ae-edfa-f9ed517cb2cb"),
-                            ExpiresAt = new DateTime(2026, 10, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 10, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("a26dfc2b-0795-f479-c6f1-e939f171b16b"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 4,
                             ReservedCredits = 0,
                             TotalCredits = 5,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("b87db777-4820-3355-9948-041a8afe5d4b"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("1e151057-ccf6-5a19-2d99-5b5041ac81f2"),
-                            ExpiresAt = new DateTime(2026, 11, 17, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 11, 17, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("875d6f79-65ce-4ccf-0dbf-12605df3e09d"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 10,
                             ReservedCredits = 1,
                             TotalCredits = 10,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("ea178241-7dc7-ee60-12c3-4693dd2b3dfb"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             CustomerId = new Guid("a9103b4a-e548-6bcd-b239-f7c71c179881"),
-                            ExpiresAt = new DateTime(2026, 11, 17, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 11, 17, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("875d6f79-65ce-4ccf-0dbf-12605df3e09d"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 10,
                             ReservedCredits = 1,
                             TotalCredits = 10,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("c4ead12f-8460-c8cf-cd9f-4fed44975dc1"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("0d0238a1-a72d-7624-1a8f-99d6aee4c02a"),
                             CustomerId = new Guid("417f56ea-60be-a7d9-d576-69740730a6b4"),
-                            ExpiresAt = new DateTime(2026, 11, 17, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 11, 17, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("57a730c5-f254-c240-6cb5-0fb6abe09aff"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 9,
                             ReservedCredits = 0,
                             TotalCredits = 10,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("92c7d3cb-cd53-775b-e9e9-3b2b1c41cc6c"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("0d0238a1-a72d-7624-1a8f-99d6aee4c02a"),
                             CustomerId = new Guid("2aedd076-ca5a-2959-f239-bf24255dd176"),
-                            ExpiresAt = new DateTime(2026, 11, 17, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 11, 17, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("57a730c5-f254-c240-6cb5-0fb6abe09aff"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 9,
                             ReservedCredits = 0,
                             TotalCredits = 10,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("23ebed7a-af0f-0861-235e-31cedec9ef5a"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("0d0238a1-a72d-7624-1a8f-99d6aee4c02a"),
                             CustomerId = new Guid("00484cfb-27be-2548-1aa6-a349c22204ac"),
-                            ExpiresAt = new DateTime(2026, 11, 17, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            ExpiresAt = new DateTime(2026, 11, 17, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             PackageId = new Guid("57a730c5-f254-c240-6cb5-0fb6abe09aff"),
-                            PurchasedAt = new DateTime(2026, 9, 18, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            PurchasedAt = new DateTime(2026, 9, 18, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             RemainingCredits = 9,
                             ReservedCredits = 0,
                             TotalCredits = 10,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         });
                 });
 
@@ -727,73 +727,73 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("a26dfc2b-0795-f479-c6f1-e939f171b16b"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             Credits = 5,
                             IsActive = true,
                             Name = "Fitness Starter",
                             Price = 49.00m,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             ValidityDays = 30
                         },
                         new
                         {
                             Id = new Guid("875d6f79-65ce-4ccf-0dbf-12605df3e09d"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             Credits = 10,
                             IsActive = true,
                             Name = "Fitness Standard",
                             Price = 89.00m,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             ValidityDays = 60
                         },
                         new
                         {
                             Id = new Guid("c02d394a-97bf-c060-8bf8-64fd888cc57d"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             Credits = 20,
                             IsActive = true,
                             Name = "Fitness Pro",
                             Price = 159.00m,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             ValidityDays = 90
                         },
                         new
                         {
                             Id = new Guid("7fb4b589-1518-7793-5ff2-fb89e1c6e852"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("0d0238a1-a72d-7624-1a8f-99d6aee4c02a"),
                             Credits = 5,
                             IsActive = true,
                             Name = "Yoga Starter",
                             Price = 45.00m,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             ValidityDays = 30
                         },
                         new
                         {
                             Id = new Guid("57a730c5-f254-c240-6cb5-0fb6abe09aff"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("0d0238a1-a72d-7624-1a8f-99d6aee4c02a"),
                             Credits = 10,
                             IsActive = true,
                             Name = "Yoga Standard",
                             Price = 85.00m,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             ValidityDays = 60
                         },
                         new
                         {
                             Id = new Guid("20f9dcfc-422b-d1ea-1af7-d5f51b1a72d7"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             BusinessId = new Guid("0d0238a1-a72d-7624-1a8f-99d6aee4c02a"),
                             Credits = 20,
                             IsActive = true,
                             Name = "Yoga Pro",
                             Price = 149.00m,
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             ValidityDays = 90
                         });
                 });
@@ -849,7 +849,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("881ee867-8186-f02e-da88-63950875320e"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             AvailableSlots = 15,
                             BookedCount = 3,
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
@@ -857,12 +857,12 @@ namespace Persistence.Migrations
                             EndTime = new DateTime(2026, 9, 22, 2, 0, 0, 0, DateTimeKind.Utc),
                             InstructorName = "Brad Pitt",
                             StartTime = new DateTime(2026, 9, 22, 1, 0, 0, 0, DateTimeKind.Utc),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("d7a37bf5-57c5-50f3-380e-c504e9bf207d"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             AvailableSlots = 12,
                             BookedCount = 0,
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
@@ -870,12 +870,12 @@ namespace Persistence.Migrations
                             EndTime = new DateTime(2026, 9, 22, 2, 30, 0, 0, DateTimeKind.Utc),
                             InstructorName = "Justin Bieber",
                             StartTime = new DateTime(2026, 9, 22, 1, 30, 0, 0, DateTimeKind.Utc),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("9b19dfb0-d397-d788-6589-e26716010aee"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             AvailableSlots = 10,
                             BookedCount = 0,
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
@@ -883,12 +883,12 @@ namespace Persistence.Migrations
                             EndTime = new DateTime(2026, 9, 22, 3, 0, 0, 0, DateTimeKind.Utc),
                             InstructorName = "Taylor Swift",
                             StartTime = new DateTime(2026, 9, 22, 2, 0, 0, 0, DateTimeKind.Utc),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("c35a8c92-23bb-7c32-4e38-b8f537a40571"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             AvailableSlots = 5,
                             BookedCount = 5,
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
@@ -896,25 +896,25 @@ namespace Persistence.Migrations
                             EndTime = new DateTime(2026, 9, 23, 11, 0, 0, 0, DateTimeKind.Utc),
                             InstructorName = "Bradd Pitt",
                             StartTime = new DateTime(2026, 9, 23, 10, 0, 0, 0, DateTimeKind.Utc),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("c52fa314-f98e-013b-b5d1-f85c7f303eb4"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             AvailableSlots = 10,
                             BookedCount = 1,
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             ClassName = "Lunchtime Pilates",
-                            EndTime = new DateTime(2026, 9, 21, 6, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            EndTime = new DateTime(2026, 9, 21, 10, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             InstructorName = "Sofia Rossi",
-                            StartTime = new DateTime(2026, 9, 21, 5, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            StartTime = new DateTime(2026, 9, 21, 9, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("03400720-bc13-511c-930e-0605aafa1bcf"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             AvailableSlots = 8,
                             BookedCount = 1,
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
@@ -922,25 +922,25 @@ namespace Persistence.Migrations
                             EndTime = new DateTime(2026, 9, 24, 0, 0, 0, 0, DateTimeKind.Utc),
                             InstructorName = "Tom Holland",
                             StartTime = new DateTime(2026, 9, 23, 23, 0, 0, 0, DateTimeKind.Utc),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("71cf8a55-66de-661c-e284-7b0100fed16c"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             AvailableSlots = 10,
                             BookedCount = 0,
                             BusinessId = new Guid("cf24fc77-facf-8d6e-9654-5b07b6cc8ad6"),
                             ClassName = "Sunrise Bootcamp",
-                            EndTime = new DateTime(2026, 9, 21, 1, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            EndTime = new DateTime(2026, 9, 21, 5, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             InstructorName = "Chris Hemsworth",
-                            StartTime = new DateTime(2026, 9, 21, 0, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            StartTime = new DateTime(2026, 9, 21, 4, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("29430c46-33b6-e642-5431-7df2fc70a73e"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             AvailableSlots = 20,
                             BookedCount = 3,
                             BusinessId = new Guid("0d0238a1-a72d-7624-1a8f-99d6aee4c02a"),
@@ -948,7 +948,7 @@ namespace Persistence.Migrations
                             EndTime = new DateTime(2026, 9, 22, 1, 15, 0, 0, DateTimeKind.Utc),
                             InstructorName = "Zendaya",
                             StartTime = new DateTime(2026, 9, 22, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         });
                 });
 
@@ -999,24 +999,24 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = new Guid("5bbbda12-434c-cf03-964b-95a1e4108297"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("1e151057-ccf6-5a19-2d99-5b5041ac81f2"),
                             CustomerPackageId = new Guid("b87db777-4820-3355-9948-041a8afe5d4b"),
-                            JoinedAt = new DateTime(2026, 9, 21, 1, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            JoinedAt = new DateTime(2026, 9, 21, 5, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Status = 1,
                             TimetableScheduleId = new Guid("c35a8c92-23bb-7c32-4e38-b8f537a40571"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         },
                         new
                         {
                             Id = new Guid("2d43f82e-e338-ec7f-3209-461ce3ebf3d0"),
-                            AddedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            AddedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             CustomerId = new Guid("a9103b4a-e548-6bcd-b239-f7c71c179881"),
                             CustomerPackageId = new Guid("ea178241-7dc7-ee60-12c3-4693dd2b3dfb"),
-                            JoinedAt = new DateTime(2026, 9, 21, 2, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990),
+                            JoinedAt = new DateTime(2026, 9, 21, 6, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440),
                             Status = 1,
                             TimetableScheduleId = new Guid("c35a8c92-23bb-7c32-4e38-b8f537a40571"),
-                            UpdatedAt = new DateTime(2026, 9, 21, 3, 50, 57, 573, DateTimeKind.Utc).AddTicks(8990)
+                            UpdatedAt = new DateTime(2026, 9, 21, 7, 1, 56, 360, DateTimeKind.Utc).AddTicks(8440)
                         });
                 });
 

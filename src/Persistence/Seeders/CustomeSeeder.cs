@@ -1,4 +1,3 @@
-using Application.Abstractions.Services;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -6,47 +5,64 @@ using Persistence.Common.Helpers;
 
 namespace Persistence.Seeders;
 
-// Please upload the source code to a public GitHub repository and submit the GitHub URL
-// to:
-// zawmyohtun@, yannaingkyaw@, CC: zhengyu@ and
-// eaintpan@
-
-public class CustomerSeeder(IHashPasswordService hashPasswordService)
-    : IEntityTypeConfiguration<CustomerEntity>
+public class CustomerSeeder : IEntityTypeConfiguration<CustomerEntity>
 {
+    public const string DefaultPassword = "Password123!";
+
+    /// output of Md5HashPasswordService("Password123!")
+    private const string DefaultPasswordHash = "LBA/LE7R5ZwLTi4Bghdw+g==";
+
+    public const string KyawPyaePhyo = "Kyaw Pyae Phyo";
+    public const string ZawMyoTun = "Zaw Myo Tun";
+    public const string YanNaingKyaw = "Yan Naing Kyaw";
+    public const string ZhengYu = "Zheng Yu";
+    public const string EaintPan = "Eaint Pan";
+    public const string BruceWill = "Bruce Will";
+    public const string KimJongUn = "Kim Jong Un";
+    public const string DonaldTrump = "Donald Trump";
+    public const string SteveRoger = "Steve Roger";
+    public const string TonyStark = "Tony Stark";
+    public const string ThorOdinson = "Thor Odinson";
+
+    public static readonly string[] Names =
+    [
+        KyawPyaePhyo,
+        ZawMyoTun,
+        YanNaingKyaw,
+        ZhengYu,
+        EaintPan,
+        BruceWill,
+        KimJongUn,
+        DonaldTrump,
+        SteveRoger,
+        TonyStark,
+        ThorOdinson,
+    ];
+
     public void Configure(EntityTypeBuilder<CustomerEntity> builder)
     {
-        string[] names =
-        [
-            "Kyaw Pyae Phyo",
-            "Zaw Myo Tun",
-            "Yan Naing Kyaw",
-            "Zheng Yu",
-            "Eaint Pan",
-            "Bruce Will",
-            "Kim Jong Un",
-            "Donald Trump",
-            "Steve Roger",
-            "Tony Stark",
-            "Thor Odinson",
-        ];
-
-        string defaultPass = "Password123!";
-
-        var hash = hashPasswordService.Hash(defaultPass);
-
-        var customers = names.Select(name =>
-        {
-            var email = $"{name.ToLowerInvariant().Replace(' ', '.')}@notgmail.com";
-
-            return new CustomerEntity(
-                DeterministicGuid.From($"customer_{email}"),
-                name,
-                email,
-                hash
-            );
-        });
-
-        builder.HasData(customers);
+        builder.HasData(GetCustomers());
     }
+
+    public static ICollection<CustomerEntity> GetCustomers()
+    {
+        return
+        [
+            .. Names.Select(name => new CustomerEntity(
+                IdFor(name),
+                name,
+                EmailFor(name),
+                DefaultPasswordHash
+            )
+            {
+                AddedAt = SeedClock.Now,
+                UpdatedAt = SeedClock.Now,
+            }),
+        ];
+    }
+
+    public static string EmailFor(string name) =>
+        $"{name.ToLowerInvariant().Replace(' ', '.')}@notgmail.com";
+
+    public static Guid IdFor(string name) => DeterministicGuid.From($"customer_{EmailFor(name)}");
 }

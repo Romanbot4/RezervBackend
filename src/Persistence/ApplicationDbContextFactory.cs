@@ -14,15 +14,15 @@ public sealed class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Ap
 
         var configuration = new ConfigurationBuilder()
             .SetBasePath(basePath)
-            .AddJsonFile(Path.Combine(basePath, "appsettings.json"), optional: false)
-            .AddJsonFile(Path.Combine(basePath, $"appsettings.{environment}.json"))
+            .AddJsonFile("appsettings.json", optional: false)
+            .AddJsonFile($"appsettings.{environment ?? "Development"}.json", optional: true)
             .Build();
 
         var connectionString = configuration.GetConnectionString("DefaultConnection")!;
 
         var optionBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-        optionBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+        optionBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 0)));
 
         return new ApplicationDbContext(optionBuilder.Options, null!, null!);
     }

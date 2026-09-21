@@ -17,8 +17,16 @@ public class BusinessSeeder : IEntityTypeConfiguration<BusinessEntity>
     {
         return
         [
-            new BusinessEntity(RezerveFitnessId, "Rezerv Fitness"),
-            new BusinessEntity(RhinoYogaId, "Rhino Yoga Studio"),
+            new BusinessEntity(RezerveFitnessId, "Rezerv Fitness")
+            {
+                AddedAt = SeedClock.Now,
+                UpdatedAt = SeedClock.Now,
+            },
+            new BusinessEntity(RhinoYogaId, "Rhino Yoga Studio")
+            {
+                AddedAt = SeedClock.Now,
+                UpdatedAt = SeedClock.Now,
+            },
         ];
     }
 

@@ -7,11 +7,27 @@ namespace Persistence.Seeders;
 
 public class TimetableScheduleSeeder : IEntityTypeConfiguration<TimetableScheduleEntity>
 {
+    public static readonly Guid MorningUpperId = DeterministicGuid.From("time_table_morning_upper");
+    public static readonly Guid MorningCardioId = DeterministicGuid.From(
+        "time_table_morning_cardio"
+    );
+    public static readonly Guid LunchtimeUpperId = DeterministicGuid.From(
+        "time_table_before_lunchtime_upper"
+    );
+    public static readonly Guid StrengthFoundationsId = DeterministicGuid.From(
+        "time_table_strength_foundations"
+    );
+    public static readonly Guid LunchtimePilatesId = DeterministicGuid.From(
+        "time_table_lunchtime_pilates"
+    );
+    public static readonly Guid EarlyBirdCardioId = DeterministicGuid.From(
+        "time_table_early_bird_cardio"
+    );
+    public static readonly Guid ZendayaYogaId = DeterministicGuid.From("time_table_zendaya_yoga");
+
     public void Configure(EntityTypeBuilder<TimetableScheduleEntity> builder)
     {
-        ICollection<TimetableScheduleEntity> packages = GetTimetableSchedules();
-
-        builder.HasData(packages);
+        builder.HasData(GetTimetableSchedules());
     }
 
     public static ICollection<TimetableScheduleEntity> GetTimetableSchedules()
@@ -19,86 +35,122 @@ public class TimetableScheduleSeeder : IEntityTypeConfiguration<TimetableSchedul
         var rezerveFitnessId = BusinessSeeder.RezerveFitnessId;
         var rhinoYogaId = BusinessSeeder.RhinoYogaId;
 
-        var now = DateTime.UtcNow;
+        var now = SeedClock.Now;
         var todayMidnight = GetTodaySingaporeMidnightInUtc();
 
         return
         [
-            new TimetableScheduleEntity(
-                id: DeterministicGuid.From("time_table_morning_upper"),
-                businessId: rezerveFitnessId,
-                className: "Morning Upper Body Workout",
-                instructorName: "Brad Pitt",
-                startTime: todayMidnight.AddDays(1).AddHours(9),
-                endTime: todayMidnight.AddDays(1).AddHours(10),
-                availableSlots: 15
+            Schedule(
+                MorningUpperId,
+                rezerveFitnessId,
+                "Morning Upper Body Workout",
+                "Brad Pitt",
+                todayMidnight.AddDays(1).AddHours(9),
+                todayMidnight.AddDays(1).AddHours(10),
+                availableSlots: 15,
+                bookedCount: 3
             ),
-            new TimetableScheduleEntity(
-                id: DeterministicGuid.From("time_table_morning_cardio"),
-                businessId: rezerveFitnessId,
-                className: "Morning Cardio Class",
-                instructorName: "Justin Bieber",
-                startTime: todayMidnight.AddDays(1).AddHours(9).AddMinutes(30),
-                endTime: todayMidnight.AddDays(1).AddHours(10).AddMinutes(30),
-                availableSlots: 12
+            // Left empty on purpose, for the mixed availability the brief asks for.
+            Schedule(
+                MorningCardioId,
+                rezerveFitnessId,
+                "Morning Cardio Class",
+                "Justin Bieber",
+                todayMidnight.AddDays(1).AddHours(9).AddMinutes(30),
+                todayMidnight.AddDays(1).AddHours(10).AddMinutes(30),
+                availableSlots: 12,
+                bookedCount: 0
             ),
-            new TimetableScheduleEntity(
-                id: DeterministicGuid.From("time_table_before_lunchtime_upper"),
-                businessId: rezerveFitnessId,
-                className: "Lunchtime Upper Body Workout",
-                instructorName: "Taylor Swift",
-                startTime: todayMidnight.AddDays(1).AddHours(10),
-                endTime: todayMidnight.AddDays(1).AddHours(11),
-                availableSlots: 10
+            Schedule(
+                LunchtimeUpperId,
+                rezerveFitnessId,
+                "Lunchtime Upper Body Workout",
+                "Taylor Swift",
+                todayMidnight.AddDays(1).AddHours(10),
+                todayMidnight.AddDays(1).AddHours(11),
+                availableSlots: 10,
+                bookedCount: 0
             ),
-            // For low capacity
-            new TimetableScheduleEntity(
-                id: DeterministicGuid.From("time_table_strength_foundations"),
-                businessId: rezerveFitnessId,
-                className: "Strength Foundations",
-                instructorName: "Bradd Pitt",
-                startTime: todayMidnight.AddDays(2).AddHours(18),
-                endTime: todayMidnight.AddDays(2).AddHours(19),
-                availableSlots: 5
+            // Seeded to capacity, with a waitlist queued behind it. This is the class to cancel
+            // from if you want to watch a promotion happen.
+            Schedule(
+                StrengthFoundationsId,
+                rezerveFitnessId,
+                "Strength Foundations",
+                "Bradd Pitt",
+                todayMidnight.AddDays(2).AddHours(18),
+                todayMidnight.AddDays(2).AddHours(19),
+                availableSlots: 5,
+                bookedCount: 5
             ),
-            // Starts in two hours. To test no refund.
-            new TimetableScheduleEntity(
-                id: DeterministicGuid.From("time_table_lunchtime_pilates"),
-                businessId: rezerveFitnessId,
-                className: "Lunchtime Pilates",
-                instructorName: "Sofia Rossi",
-                startTime: now.AddHours(2),
-                endTime: now.AddHours(3),
-                availableSlots: 10
+            // Starts in two hours, so cancelling falls inside the 4 hour window. No refund.
+            Schedule(
+                LunchtimePilatesId,
+                rezerveFitnessId,
+                "Lunchtime Pilates",
+                "Sofia Rossi",
+                now.AddHours(2),
+                now.AddHours(3),
+                availableSlots: 10,
+                bookedCount: 1
             ),
-            // Starts in 3 days and more. To test refund.
-            new TimetableScheduleEntity(
-                id: DeterministicGuid.From("time_table_early_bird_cardio"),
-                businessId: rezerveFitnessId,
-                className: "Early Bird Cardio",
-                instructorName: "Tom Holland",
-                startTime: todayMidnight.AddDays(3).AddHours(7),
-                endTime: todayMidnight.AddDays(3).AddHours(8),
-                availableSlots: 8
+            // Days away, so cancelling earns the credit back.
+            Schedule(
+                EarlyBirdCardioId,
+                rezerveFitnessId,
+                "Early Bird Cardio",
+                "Tom Holland",
+                todayMidnight.AddDays(3).AddHours(7),
+                todayMidnight.AddDays(3).AddHours(8),
+                availableSlots: 8,
+                bookedCount: 1
             ),
-            new TimetableScheduleEntity(
-                id: DeterministicGuid.From("time_table_zendaya_yoga"),
-                businessId: rhinoYogaId,
-                className: "Zendaya Yoga",
-                instructorName: "Zendaya",
-                startTime: todayMidnight.AddDays(1).AddHours(8),
-                endTime: todayMidnight.AddDays(1).AddHours(9).AddMinutes(15),
-                availableSlots: 20
+            Schedule(
+                ZendayaYogaId,
+                rhinoYogaId,
+                "Zendaya Yoga",
+                "Zendaya",
+                todayMidnight.AddDays(1).AddHours(8),
+                todayMidnight.AddDays(1).AddHours(9).AddMinutes(15),
+                availableSlots: 20,
+                bookedCount: 3
             ),
         ];
     }
+
+    private static TimetableScheduleEntity Schedule(
+        Guid id,
+        Guid businessId,
+        string className,
+        string instructorName,
+        DateTime startTime,
+        DateTime endTime,
+        int availableSlots,
+        int bookedCount
+    ) =>
+        new(
+            id: id,
+            businessId: businessId,
+            className: className,
+            instructorName: instructorName,
+            startTime: startTime,
+            endTime: endTime,
+            availableSlots: availableSlots,
+            bookedCount: bookedCount
+        )
+        {
+            AddedAt = SeedClock.Now,
+            UpdatedAt = SeedClock.Now,
+        };
 
     private static DateTime GetTodaySingaporeMidnightInUtc()
     {
         TimeZoneInfo sgTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Asia/Singapore");
 
-        DateTime currentSgTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, sgTimeZone);
+        DateTime currentSgTime = TimeZoneInfo.ConvertTimeFromUtc(SeedClock.Now, sgTimeZone);
 
-        return currentSgTime.Date;
+        // Converted back, otherwise this returns Singapore local midnight while claiming to be UTC
+        // and every seeded class lands 8 hours away from where it says it is.
+        return TimeZoneInfo.ConvertTimeToUtc(currentSgTime.Date, sgTimeZone);
     }
 }

@@ -33,6 +33,7 @@ public class CancelBookingCommandHandler(
     ICurrentUserService currentUser,
     IWaitlistPromoter waitlistPromoter,
     IDistributedLockService locks,
+    ICacheService cache,
     IDateTime dateTime,
     IUnitOfWork unitOfWork
 ) : ICommandHandler<CancelBookingCommand, BookClassResponse>
@@ -81,6 +82,8 @@ public class CancelBookingCommandHandler(
 
         await transaction.CommitAsync(cancellationToken);
 
+        await cache.RemoveByPrefixAsync(CacheKeys.TimetablePrefix, cancellationToken);
+
         return Result<BookClassResponse>.Success(result);
     }
 
@@ -104,6 +107,8 @@ public class CancelBookingCommandHandler(
         booking.Cancel(now, refundApplied);
 
         await schedules.ReleaseSlotAsync(schedule.Id, cancellationToken);
+
+        schedule.ReleaseSlot();
 
         if (refundApplied)
         {

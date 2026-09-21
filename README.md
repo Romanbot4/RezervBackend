@@ -252,3 +252,27 @@ catch (RedisException exception)
 
 - the lock is taken before BeginTransactionAsync so the lock always covers the transaction
 - if the wait times out the request gets 422 ScheduleBusy so the user can retry
+
+## 13. Redis Caching
+
+GET /api/timetable is readonly endpoint every user hits first and it changes rarely, so I will use it to showcase Redis skill
+
+Keys
+
+```
+timetable:all:all
+timetable:{businessId}:all
+timetable:all:{date}
+```
+
+- one key per filter combination with a 60 second TTL
+- booking and cancelling clear the whole timetable prefix after the commit, not before,
+  so the new attendance is already visible when the cache is dropped
+- like the concurrency lock if fails open. Every redis error is caught reads the database instead.
+
+Measured on a fresh database
+
+```
+1st call  miss  0.0095s   creates timetable:all:all
+2nd call  hit   0.0056s   no db query
+```

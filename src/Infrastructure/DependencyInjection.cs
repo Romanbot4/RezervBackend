@@ -1,6 +1,7 @@
 ﻿using Application.Abstractions.DateTime;
 using Application.Abstractions.Services;
 using Application.Configurations;
+using Infrastructure.Common.Caching;
 using Infrastructure.Common.ExceptionHandlers;
 using Infrastructure.Common.Locking;
 using Infrastructure.Implementations.DateTime;
@@ -47,6 +48,7 @@ public static class DependencyInjection
 
         services.AddSingleton<IConnectionMultiplexer>(_ => ConnectionMultiplexer.Connect(options));
         services.AddSingleton<IDistributedLockService, RedisDistributedLockService>();
+        services.AddSingleton<ICacheService, RedisCacheService>();
 
         return services;
     }

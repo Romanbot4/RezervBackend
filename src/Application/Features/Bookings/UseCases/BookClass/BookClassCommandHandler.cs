@@ -13,6 +13,7 @@ namespace Application.Features.Bookings.UseCases.BookClass;
 public class BookClassCommandHandler(
     IBookingService booking,
     IDistributedLockService locks,
+    ICacheService cache,
     IUnitOfWork unitOfWork
 ) : ICommandHandler<BookClassCommand, BookClassResponse>
 {
@@ -48,6 +49,8 @@ public class BookClassCommandHandler(
 
             await transaction.CommitAsync(cancellationToken);
 
+            await cache.RemoveByPrefixAsync(CacheKeys.TimetablePrefix, cancellationToken);
+
             return Result<BookClassResponse>.Success(
                 new BookClassResponse(
                     Outcome: BookingOutcome.Waitlisted,
@@ -63,6 +66,8 @@ public class BookClassCommandHandler(
         var created = await booking.BookAsync(context, cancellationToken);
 
         await transaction.CommitAsync(cancellationToken);
+
+        await cache.RemoveByPrefixAsync(CacheKeys.TimetablePrefix, cancellationToken);
 
         return Result<BookClassResponse>.Success(
             new BookClassResponse(

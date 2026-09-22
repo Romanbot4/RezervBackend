@@ -119,7 +119,7 @@ I will use Domain driven approach and will translate business logic methods to e
 - implemented the entity configurations inside Persistence Layer
 - also added the seed to most fundamental entities
 - focused on timetable data. will need to use these data to test different edge cases.
-- I also added a CreditTransactionEntity which seems like a violation of Atomic design but I just thought there should be something to log the transactions
+- I also added a CreditTransactionEntity which seems like a violation of SSoT Principle but I just thought there should be something to log the transactions
 
 ## 5. UseCases
 
